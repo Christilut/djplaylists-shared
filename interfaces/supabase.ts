@@ -59,7 +59,7 @@ export enum SupabaseColumnsUsers {
   CreatedAt = 'created_at',
 }
 
-export interface SupabasePlaylist {
+export interface DJPlaylist {
   id?: string
   title: string
   type: PlaylistType
@@ -71,11 +71,11 @@ export interface SupabasePlaylist {
   trending?: boolean
 }
 
-export interface SupabasePlaylistItem {
+export interface DJPlaylistItem {
   id?: string // Row ID
-  position: number // Index in playlist
-  playlistId: string // Playlist ID
-  createdAt: Date // Row creation date
+  position?: number // Index in playlist
+  playlistId?: string // Playlist ID
+  createdAt?: Date // Row creation date
   
   // Track metadata
   title: string
@@ -104,7 +104,7 @@ export interface SupabasePlaylistItem {
   spotify_link?: string
 }
 
-export interface SupabaseUser {
+export interface DJPlaylistUser {
   id: string
   name: string
   email: string

@@ -1,6 +1,6 @@
 import { PlaylistType } from './playlist';
 import { ISpotifyTrack } from './spotify';
-import { SupabasePlaylist, SupabasePlaylistItem } from './supabase';
+import { DJPlaylist, DJPlaylistItem } from './supabase';
 
 export enum MoodOptions {
   Low = 'low',
@@ -34,8 +34,8 @@ export interface PlaylistGenerationParams {
 } 
 
 export interface PlaylistGenerationResponse {
-  playlist: SupabasePlaylist
-  items: SupabasePlaylistItem[]
+  playlist: DJPlaylist
+  items: DJPlaylistItem[]
 }
 
 export interface TrackSearchResponse {
