@@ -16,7 +16,6 @@ export enum SupabaseColumnsPlaylists {
   CreatedBy = 'created_by',
   CreatedAt = 'created_at',
   Trending = 'trending',
-  AppleMusicId = 'applemusic_id',
 }
 
 export enum SupabaseColumnsPlaylistItems {
@@ -30,9 +29,24 @@ export enum SupabaseColumnsPlaylistItems {
   ImageUrl = 'imageurl',
   Position = 'position',
   Duration = 'duration',
+  ReleaseDate = 'release_date',
+  Bpm = 'bpm',
+  Key = 'key',
+  Energy = 'energy',
+  Danceability = 'danceability',
+  Happiness = 'happiness',
+  Popularity = 'popularity',
+  Acousticness = 'acousticness',
+  Instrumentalness = 'instrumentalness',
+  Liveness = 'liveness',
+  Speechiness = 'speechiness',
+  Valence = 'valence',
+  Explicit = 'explicit',
+
   AppleMusicId = 'applemusic_id',
   AppleMusicPreview = 'applemusic_preview',
   AppleMusicLink = 'applemusic_link',
+
   SpotifyId = 'spotify_id',
   SpotifyPreview = 'spotify_preview',
   SpotifyLink = 'spotify_link',
@@ -55,7 +69,6 @@ export interface SupabasePlaylist {
   [SupabaseColumnsPlaylists.CreatedBy]?: string
   [SupabaseColumnsPlaylists.CreatedAt]?: Date
   [SupabaseColumnsPlaylists.Trending]?: boolean
-  [SupabaseColumnsPlaylists.AppleMusicId]?: string
 }
 
 export interface SupabasePlaylistItem {
@@ -68,9 +81,24 @@ export interface SupabasePlaylistItem {
   [SupabaseColumnsPlaylistItems.Position]?: number
   [SupabaseColumnsPlaylistItems.Duration]?: number
   [SupabaseColumnsPlaylistItems.CreatedAt]?: Date
+  [SupabaseColumnsPlaylistItems.ReleaseDate]?: Date
+  [SupabaseColumnsPlaylistItems.Bpm]?: number
+  [SupabaseColumnsPlaylistItems.Key]?: string
+  [SupabaseColumnsPlaylistItems.Energy]?: number
+  [SupabaseColumnsPlaylistItems.Danceability]?: number
+  [SupabaseColumnsPlaylistItems.Happiness]?: number
+  [SupabaseColumnsPlaylistItems.Popularity]?: number
+  [SupabaseColumnsPlaylistItems.Acousticness]?: number
+  [SupabaseColumnsPlaylistItems.Instrumentalness]?: number
+  [SupabaseColumnsPlaylistItems.Liveness]?: number
+  [SupabaseColumnsPlaylistItems.Speechiness]?: number
+  [SupabaseColumnsPlaylistItems.Valence]?: number
+  [SupabaseColumnsPlaylistItems.Explicit]?: boolean
+
   [SupabaseColumnsPlaylistItems.AppleMusicId]?: string
   [SupabaseColumnsPlaylistItems.AppleMusicPreview]?: string
   [SupabaseColumnsPlaylistItems.AppleMusicLink]?: string
+
   [SupabaseColumnsPlaylistItems.SpotifyId]?: string
   [SupabaseColumnsPlaylistItems.SpotifyPreview]?: string
   [SupabaseColumnsPlaylistItems.SpotifyLink]?: string
