@@ -63,11 +63,11 @@ export interface DJPlaylist {
   id?: string
   title: string
   type: PlaylistType
-  imageUrl?: string
+  imageurl?: string
   description?: string
   tag?: string
-  createdBy?: string
-  createdAt?: Date
+  created_by?: string
+  created_at?: Date
   trending?: boolean
 }
 
@@ -81,9 +81,9 @@ export interface DJPlaylistItem {
   title: string
   artist: string
   album: string
-  imageUrl: string
+  imageurl: string
   duration: number
-  releaseDate: Date
+  releasedate: Date
   bpm: number
   key: string
   energy?: number

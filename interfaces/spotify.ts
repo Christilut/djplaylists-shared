@@ -118,6 +118,22 @@ export interface SpotifySearchResponse {
   }
 }
 
+export interface SpotifyGetTracksResponse {
+  tracks: ISpotifyTrack[]
+}
+
+export interface SpotifyGetRecommendationsResponse {
+  tracks: ISpotifyTrack[]
+  seeds: {
+    initialPoolSize: number
+    afterFilteringSize: number
+    afterRelinkingSize: number
+    href: string
+    id: string
+    type: string
+  }[]
+}
+
 export interface SpotifyAudioFeaturesResponse {
   audio_features: {
     acousticness: number
