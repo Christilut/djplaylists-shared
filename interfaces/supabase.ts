@@ -60,53 +60,53 @@ export enum SupabaseColumnsUsers {
 }
 
 export interface SupabasePlaylist {
-  [SupabaseColumnsPlaylists.Id]?: string
-  [SupabaseColumnsPlaylists.Title]: string
-  [SupabaseColumnsPlaylists.Type]: PlaylistType
-  [SupabaseColumnsPlaylists.ImageUrl]?: string
-  [SupabaseColumnsPlaylists.Description]?: string
-  [SupabaseColumnsPlaylists.Tag]?: string
-  [SupabaseColumnsPlaylists.CreatedBy]?: string
-  [SupabaseColumnsPlaylists.CreatedAt]?: Date
-  [SupabaseColumnsPlaylists.Trending]?: boolean
+  id?: string
+  title: string
+  type: PlaylistType
+  imageUrl?: string
+  description?: string
+  tag?: string
+  createdBy?: string
+  createdAt?: Date
+  trending?: boolean
 }
 
 export interface SupabasePlaylistItem {
-  [SupabaseColumnsPlaylistItems.Id]?: string
-  [SupabaseColumnsPlaylistItems.PlaylistId]: string
-  [SupabaseColumnsPlaylistItems.Title]: string
-  [SupabaseColumnsPlaylistItems.Artist]: string
-  [SupabaseColumnsPlaylistItems.Album]?: string
-  [SupabaseColumnsPlaylistItems.ImageUrl]?: string
-  [SupabaseColumnsPlaylistItems.Position]?: number
-  [SupabaseColumnsPlaylistItems.Duration]?: number
-  [SupabaseColumnsPlaylistItems.CreatedAt]?: Date
-  [SupabaseColumnsPlaylistItems.ReleaseDate]?: Date
-  [SupabaseColumnsPlaylistItems.Bpm]?: number
-  [SupabaseColumnsPlaylistItems.Key]?: string
-  [SupabaseColumnsPlaylistItems.Energy]?: number
-  [SupabaseColumnsPlaylistItems.Danceability]?: number
-  [SupabaseColumnsPlaylistItems.Happiness]?: number
-  [SupabaseColumnsPlaylistItems.Popularity]?: number
-  [SupabaseColumnsPlaylistItems.Acousticness]?: number
-  [SupabaseColumnsPlaylistItems.Instrumentalness]?: number
-  [SupabaseColumnsPlaylistItems.Liveness]?: number
-  [SupabaseColumnsPlaylistItems.Speechiness]?: number
-  [SupabaseColumnsPlaylistItems.Valence]?: number
-  [SupabaseColumnsPlaylistItems.Explicit]?: boolean
-
-  [SupabaseColumnsPlaylistItems.AppleMusicId]?: string
-  [SupabaseColumnsPlaylistItems.AppleMusicPreview]?: string
-  [SupabaseColumnsPlaylistItems.AppleMusicLink]?: string
-
-  [SupabaseColumnsPlaylistItems.SpotifyId]?: string
-  [SupabaseColumnsPlaylistItems.SpotifyPreview]?: string
-  [SupabaseColumnsPlaylistItems.SpotifyLink]?: string
+  id?: string // Row ID
+  position: number // Index in playlist
+  playlistId: string // Playlist ID
+  createdAt: Date // Row creation date
+  
+  // Track metadata
+  title: string
+  artist: string
+  album: string
+  imageUrl: string
+  duration: number
+  releaseDate: Date
+  bpm: number
+  key: string
+  energy?: number
+  danceability?: number
+  happiness?: number
+  popularity?: number
+  acousticness?: number
+  instrumentalness?: number
+  liveness?: number
+  speechiness?: number
+  valence?: number
+  explicit?: boolean
+  applemusic_id?: string
+  applemusic_preview?: string
+  applemusic_link?: string
+  spotify_id?: string
+  spotify_preview?: string
+  spotify_link?: string
 }
 
 export interface SupabaseUser {
-  [SupabaseColumnsUsers.Id]: string
-  [SupabaseColumnsUsers.Name]: string
-  [SupabaseColumnsUsers.Email]: string
-  [SupabaseColumnsUsers.CreatedAt]?: Date
+  id: string
+  name: string
+  email: string
+  createdAt?: Date
 }

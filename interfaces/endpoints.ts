@@ -29,8 +29,8 @@ export interface PlaylistGenerationParams {
   danceability: MoodOptions;
   popularity: MoodOptions;
   energy: EnergyOptions;
-  startingTrackIds?: string[];
-  yearRange?: [number, number];
+  startingTrackIds: string[];
+  yearRange: [number, number];
 } 
 
 export interface PlaylistGenerationResponse {
