@@ -74,6 +74,7 @@ export class DJPlaylist {
 
   // For UI
   _selected?: boolean
+  _externalId?: string // Used to keep AM playlist ID from UI
   _items?: DJPlaylistItem[]
 
   constructor(playlistData: DJPlaylist, itemsData?: DJPlaylistItem[]) {
