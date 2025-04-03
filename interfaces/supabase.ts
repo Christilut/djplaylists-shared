@@ -74,8 +74,8 @@ export interface DJPlaylist {
 export interface DJPlaylistItem {
   id?: string // Row ID
   position?: number // Index in playlist
-  playlistId?: string // Playlist ID
-  createdAt?: Date // Row creation date
+  playlist_id?: string // Playlist ID
+  created_at?: Date // Row creation date
   
   // Track metadata
   title: string
