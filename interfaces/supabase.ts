@@ -60,7 +60,7 @@ export enum SupabaseColumnsUsers {
   CreatedAt = 'created_at',
 }
 
-export interface DJPlaylist {
+export class DJPlaylist {
   id?: string
   title: string
   type: PlaylistType
@@ -74,6 +74,16 @@ export interface DJPlaylist {
 
   // For UI
   _selected?: boolean
+  _items?: DJPlaylistItem[]
+
+  constructor(playlistData: DJPlaylist, itemsData?: DJPlaylistItem[]) {
+    Object.assign(this, playlistData);
+
+    // Add items if provided
+    if (itemsData) {
+      this._items = itemsData
+    }
+  }
 }
 
 export interface DJPlaylistItem {
