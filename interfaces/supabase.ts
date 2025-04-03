@@ -16,6 +16,7 @@ export enum SupabaseColumnsPlaylists {
   CreatedBy = 'created_by',
   CreatedAt = 'created_at',
   Trending = 'trending',
+  Published = 'published',
 }
 
 export enum SupabaseColumnsPlaylistItems {
@@ -69,6 +70,10 @@ export interface DJPlaylist {
   created_by?: string
   created_at?: Date
   trending?: boolean
+  published?: boolean
+
+  // For UI
+  _selected?: boolean
 }
 
 export interface DJPlaylistItem {
