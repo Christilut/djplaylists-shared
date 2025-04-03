@@ -62,8 +62,8 @@ export enum SupabaseColumnsUsers {
 
 export class DJPlaylist {
   id?: string
-  title: string
-  type: PlaylistType
+  title?: string
+  type?: PlaylistType
   imageurl?: string
   description?: string
   tag?: string
