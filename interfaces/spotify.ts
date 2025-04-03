@@ -156,3 +156,15 @@ export interface SpotifyAudioFeaturesResponse {
     valence: number
   }[]
 }
+
+export interface ISpotifyResponsePlaylistTracks {
+  href: string
+  items: {
+    track: ISpotifyTrack
+  }[]
+  limit: number
+  next: any
+  offset: number
+  previous: any
+  total: number
+}
