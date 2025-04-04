@@ -43,6 +43,9 @@ export interface ISpotifyTrack {
     type: string
     uri: string
   }[]
+  external_ids: {
+    isrc: string
+  }
   available_markets: string[]
   disc_number: number
   duration_ms: number
