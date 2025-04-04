@@ -554,5 +554,13 @@ export declare namespace AppleMusic {
     next?: string;
   }
 
+  interface SongISRCResponse {
+    data: Songs[];
+    meta: {
+      filters: unknown
+    }
+    isrc: string
+  }
+
   type QueryParameters = Record<string, any>;
 }
