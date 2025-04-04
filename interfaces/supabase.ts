@@ -51,6 +51,14 @@ export enum SupabaseColumnsPlaylistItems {
   SpotifyId = 'spotify_id',
   SpotifyPreview = 'spotify_preview',
   SpotifyLink = 'spotify_link',
+
+  BeatportId = 'beatport_id',
+  BeatportPreview = 'beatport_preview',
+  BeatportLink = 'beatport_link',
+
+  TidalId = 'tidal_id',
+  TidalPreview = 'tidal_preview',
+  TidalLink = 'tidal_link',
 }
 
 export enum SupabaseColumnsUsers {
@@ -119,6 +127,12 @@ export interface DJPlaylistItem {
   spotify_id?: string
   spotify_preview?: string
   spotify_link?: string
+  beatport_id?: string
+  beatport_preview?: string
+  beatport_link?: string
+  tidal_id?: string
+  tidal_preview?: string
+  tidal_link?: string
 }
 
 export interface DJPlaylistUser {
