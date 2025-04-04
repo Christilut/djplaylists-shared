@@ -112,6 +112,7 @@ export interface DJPlaylistItem {
   speechiness?: number
   valence?: number
   explicit?: boolean
+  isrc?: string
   applemusic_id?: string
   applemusic_preview?: string
   applemusic_link?: string
