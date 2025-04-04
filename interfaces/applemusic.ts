@@ -23,10 +23,10 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/relationship
    */
   interface Relationship<Data> {
-      href?: string;
-      next?: string;
-      data: Data[];
-      meta?: Record<string, any>;
+    href?: string;
+    next?: string;
+    data: Data[];
+    meta?: Record<string, any>;
   }
 
   /**
@@ -34,13 +34,13 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/view
    */
   interface View<Data> {
-      href?: string;
-      next?: string;
-      attributes?: {
-          title: string;
-      };
-      data: Data[];
-      meta?: Record<string, any>;
+    href?: string;
+    next?: string;
+    attributes?: {
+      title: string;
+    };
+    data: Data[];
+    meta?: Record<string, any>;
   }
 
   /**
@@ -48,13 +48,13 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/resource
    */
   interface Resource {
-      id: string;
-      type: string;
-      href: string;
-      attributes?: Record<string, any>;
-      relationships?: Record<string, Relationship<Resource> | Array<Relationship<Resource>>>;
-      meta?: Record<string, any>;
-      views?: Record<string, View<Resource>>;
+    id: string;
+    type: string;
+    href: string;
+    attributes?: Record<string, any>;
+    relationships?: Record<string, Relationship<Resource> | Array<Relationship<Resource>>>;
+    meta?: Record<string, any>;
+    views?: Record<string, View<Resource>>;
   }
 
   /**
@@ -62,13 +62,13 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/storefronts
    */
   interface Storefronts extends Resource {
-      type: "storefronts";
-      attributes?: {
-          defaultLanguageTag: string;
-          explicitContentPolicy: "allowed" | "opt-in" | "prohibited";
-          name: string;
-          supportedLanguageTags: string[];
-      };
+    type: "storefronts";
+    attributes?: {
+      defaultLanguageTag: string;
+      explicitContentPolicy: "allowed" | "opt-in" | "prohibited";
+      name: string;
+      supportedLanguageTags: string[];
+    };
   }
 
   /**
@@ -76,12 +76,12 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/genres
    */
   interface Genres extends Resource {
-      type: "genres";
-      attributes?: {
-          name: string;
-          parentId?: string;
-          parentName?: string;
-      };
+    type: "genres";
+    attributes?: {
+      name: string;
+      parentId?: string;
+      parentName?: string;
+    };
   }
 
   /**
@@ -89,42 +89,42 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/songs-um8
    */
   interface Songs extends Resource {
-      id: MusicItemID;
-      type: "songs";
-      attributes?: {
-          albumName: string;
-          artistName: string;
-          artwork: Artwork;
-          attribution?: string;
-          composerName?: string;
-          contentRating?: ContentRating;
-          discNumber?: number;
-          durationInMillis: number;
-          editorialNotes?: EditorialNotes;
-          genreNames: string[];
-          hasLyrics: boolean;
-          isrc?: string;
-          movementCount?: number;
-          movementName?: string;
-          movementNumber?: number;
-          name: string;
-          playParams?: PlayParameters;
-          previews: Preview[];
-          releaseDate?: string;
-          trackNumber?: number;
-          url: string;
-          workName?: string;
-          artistUrl?: string;
-      };
-      relationships: {
-          albums: Relationship<Albums>;
-          artists: Relationship<Artists>;
-          genres: Relationship<Genres>;
-          station: Relationship<Stations>;
-          composers: Relationship<Artists>;
-          library: Relationship<LibraryAlbums>;
-          "music-videos": Relationship<MusicVideos>;
-      };
+    id: MusicItemID;
+    type: "songs";
+    attributes?: {
+      albumName: string;
+      artistName: string;
+      artwork: Artwork;
+      attribution?: string;
+      composerName?: string;
+      contentRating?: ContentRating;
+      discNumber?: number;
+      durationInMillis: number;
+      editorialNotes?: EditorialNotes;
+      genreNames: string[];
+      hasLyrics: boolean;
+      isrc?: string;
+      movementCount?: number;
+      movementName?: string;
+      movementNumber?: number;
+      name: string;
+      playParams?: PlayParameters;
+      previews: Preview[];
+      releaseDate?: string;
+      trackNumber?: number;
+      url: string;
+      workName?: string;
+      artistUrl?: string;
+    };
+    relationships: {
+      albums: Relationship<Albums>;
+      artists: Relationship<Artists>;
+      genres: Relationship<Genres>;
+      station: Relationship<Stations>;
+      composers: Relationship<Artists>;
+      library: Relationship<LibraryAlbums>;
+      "music-videos": Relationship<MusicVideos>;
+    };
   }
 
   /**
@@ -132,40 +132,40 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/musicvideos/
    */
   interface MusicVideos extends Resource {
-      id: MusicItemID;
-      type: "music-videos";
-      attributes?: {
-          albumName?: string;
-          artistName: string;
-          artwork: Artwork;
-          contentRating?: ContentRating;
-          durationInMillis: number;
-          editorialNotes?: EditorialNotes;
-          genreNames: string[];
-          has4K: boolean;
-          hasHDR: boolean;
-          isrc?: string;
-          name: string;
-          playParams?: PlayParameters;
-          previews: Preview[];
-          releaseDate?: string;
-          trackNumber?: number;
-          url: string;
-          videoSubType?: "preview";
-          workId?: string;
-          workName?: string;
-          artistUrl?: string;
-      };
-      relationships: {
-          albums: Relationship<Albums>;
-          genres: Relationship<Genres>;
-          library: Relationship<LibraryAlbums>;
-          songs: Relationship<Songs>;
-      };
-      views: {
-          "more-by-artist": View<MusicVideos>;
-          "more-in-genre": View<MusicVideos>;
-      };
+    id: MusicItemID;
+    type: "music-videos";
+    attributes?: {
+      albumName?: string;
+      artistName: string;
+      artwork: Artwork;
+      contentRating?: ContentRating;
+      durationInMillis: number;
+      editorialNotes?: EditorialNotes;
+      genreNames: string[];
+      has4K: boolean;
+      hasHDR: boolean;
+      isrc?: string;
+      name: string;
+      playParams?: PlayParameters;
+      previews: Preview[];
+      releaseDate?: string;
+      trackNumber?: number;
+      url: string;
+      videoSubType?: "preview";
+      workId?: string;
+      workName?: string;
+      artistUrl?: string;
+    };
+    relationships: {
+      albums: Relationship<Albums>;
+      genres: Relationship<Genres>;
+      library: Relationship<LibraryAlbums>;
+      songs: Relationship<Songs>;
+    };
+    views: {
+      "more-by-artist": View<MusicVideos>;
+      "more-in-genre": View<MusicVideos>;
+    };
   }
 
   /**
@@ -173,19 +173,19 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/applecurators/
    */
   interface AppleCurators extends Resource {
-      type: "apple-curators";
-      attributes?: {
-          artwork: Artwork;
-          editorialNotes?: EditorialNotes;
-          kind: "Curator" | "Genre" | "Show";
-          name: string;
-          shortName?: string;
-          showHostName?: string;
-          url: string;
-      };
-      relationships: {
-          playlists: Relationship<Playlists>;
-      };
+    type: "apple-curators";
+    attributes?: {
+      artwork: Artwork;
+      editorialNotes?: EditorialNotes;
+      kind: "Curator" | "Genre" | "Show";
+      name: string;
+      shortName?: string;
+      showHostName?: string;
+      url: string;
+    };
+    relationships: {
+      playlists: Relationship<Playlists>;
+    };
   }
 
   /**
@@ -193,16 +193,16 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/curators-uja
    */
   interface Curators extends Resource {
-      type: "curators";
-      attributes?: {
-          artwork: Artwork;
-          editorialNotes?: EditorialNotes;
-          name: string;
-          url: string;
-      };
-      relationships: {
-          playlists: Relationship<Playlists>;
-      };
+    type: "curators";
+    attributes?: {
+      artwork: Artwork;
+      editorialNotes?: EditorialNotes;
+      name: string;
+      url: string;
+    };
+    relationships: {
+      playlists: Relationship<Playlists>;
+    };
   }
 
   /**
@@ -210,19 +210,19 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/stations/
    */
   interface Stations extends Resource {
-      type: "stations";
-      attributes?: {
-          artwork: Artwork;
-          durationInMillis: number;
-          editorialNotes: EditorialNotes;
-          episodeNumber: number;
-          contentRating?: ContentRating;
-          isLive: boolean;
-          name: string;
-          playParams: PlayParameters;
-          stationProviderName: string;
-          url: string;
-      };
+    type: "stations";
+    attributes?: {
+      artwork: Artwork;
+      durationInMillis: number;
+      editorialNotes: EditorialNotes;
+      episodeNumber: number;
+      contentRating?: ContentRating;
+      isLive: boolean;
+      name: string;
+      playParams: PlayParameters;
+      stationProviderName: string;
+      url: string;
+    };
   }
 
   /**
@@ -230,18 +230,18 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/recordlabels/
    */
   interface RecordLabels extends Resource {
-      id: MusicItemID;
-      type: "record-labels";
-      attributes?: {
-          artwork: Artwork;
-          description: DescriptionAttribute;
-          name: string;
-          url: string;
-      };
-      views: {
-          "latest-releases": View<Albums>;
-          "top-releases": View<Albums>;
-      };
+    id: MusicItemID;
+    type: "record-labels";
+    attributes?: {
+      artwork: Artwork;
+      description: DescriptionAttribute;
+      name: string;
+      url: string;
+    };
+    views: {
+      "latest-releases": View<Albums>;
+      "top-releases": View<Albums>;
+    };
   }
 
   /**
@@ -249,41 +249,41 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/albums-uib
    */
   interface Albums extends Resource {
-      type: "albums";
-      attributes?: {
-          artistName: string;
-          artistUrl?: string;
-          artwork: Artwork;
-          contentRating?: ContentRating;
-          Possible?: ContentRating;
-          copyright?: string;
-          editorialNotes?: EditorialNotes;
-          genreNames: string[];
-          isCompilation: boolean;
-          isComplete: boolean;
-          isMasteredForItunes: boolean;
-          isSingle: boolean;
-          name: string;
-          playParams?: PlayParameters;
-          recordLabel?: string;
-          releaseDate?: string;
-          trackCount: number;
-          upc?: string;
-          url: string;
-      };
-      relationships: {
-          artists: Relationship<Artists>;
-          genres: Relationship<Genres>;
-          tracks: Relationship<MusicVideos | Songs>;
-          library: Relationship<LibraryAlbums>;
-          "record-labels": Relationship<RecordLabels>;
-      };
-      views: {
-          "appears-on": View<Playlists>;
-          "other-versions": View<Albums>;
-          "related-albums": View<Albums>;
-          "related-videos": View<MusicVideos>;
-      };
+    type: "albums";
+    attributes?: {
+      artistName: string;
+      artistUrl?: string;
+      artwork: Artwork;
+      contentRating?: ContentRating;
+      Possible?: ContentRating;
+      copyright?: string;
+      editorialNotes?: EditorialNotes;
+      genreNames: string[];
+      isCompilation: boolean;
+      isComplete: boolean;
+      isMasteredForItunes: boolean;
+      isSingle: boolean;
+      name: string;
+      playParams?: PlayParameters;
+      recordLabel?: string;
+      releaseDate?: string;
+      trackCount: number;
+      upc?: string;
+      url: string;
+    };
+    relationships: {
+      artists: Relationship<Artists>;
+      genres: Relationship<Genres>;
+      tracks: Relationship<MusicVideos | Songs>;
+      library: Relationship<LibraryAlbums>;
+      "record-labels": Relationship<RecordLabels>;
+    };
+    views: {
+      "appears-on": View<Playlists>;
+      "other-versions": View<Albums>;
+      "related-albums": View<Albums>;
+      "related-videos": View<MusicVideos>;
+    };
   }
 
   /**
@@ -291,23 +291,23 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/libraryalbums/
    */
   interface LibraryAlbums extends Resource {
-      type: "library-albums";
-      attributes?: {
-          artistName: string;
-          artwork: Artwork;
-          contentRating?: ContentRating;
-          dateAdded?: string;
-          name: string;
-          playParams?: PlayParameters;
-          releaseDate?: string;
-          trackCount: number;
-          genreNames: string[];
-      };
-      relationships: {
-          artists: Relationship<Artists>;
-          catalog: Relationship<Playlists>;
-          tracks: Relationship<MusicVideos | Songs>;
-      };
+    type: "library-albums";
+    attributes?: {
+      artistName: string;
+      artwork: Artwork;
+      contentRating?: ContentRating;
+      dateAdded?: string;
+      name: string;
+      playParams?: PlayParameters;
+      releaseDate?: string;
+      trackCount: number;
+      genreNames: string[];
+    };
+    relationships: {
+      artists: Relationship<Artists>;
+      catalog: Relationship<Playlists>;
+      tracks: Relationship<MusicVideos | Songs>;
+    };
   }
 
   /**
@@ -315,23 +315,23 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/libraryplaylists/
    */
   interface LibraryPlaylists extends Resource {
-      id: string;
-      href: string;
-      type: "library-playlists";
-      attributes?: {
-          artwork?: Artwork;
-          canEdit: boolean;
-          dateAdded?: string;
-          description?: DescriptionAttribute;
-          hasCatalog: boolean;
-          name: string;
-          playParams?: PlayParameters;
-          isPublic: boolean;
-      };
-      relationships: {
-          catalog: Relationship<Playlists>;
-          tracks: Relationship<MusicVideos | Songs>;
-      };
+    id: string;
+    href: string;
+    type: "library-playlists";
+    attributes?: {
+      artwork?: Artwork;
+      canEdit: boolean;
+      dateAdded?: string;
+      description?: DescriptionAttribute;
+      hasCatalog: boolean;
+      name: string;
+      playParams?: PlayParameters;
+      isPublic: boolean;
+    };
+    relationships: {
+      catalog: Relationship<Playlists>;
+      tracks: Relationship<MusicVideos | Songs>;
+    };
   }
 
   /**
@@ -339,13 +339,13 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/libraryplaylistsresponse
    */
   interface LibraryPlaylistsResponse {
-      data: {
-          next: string | null;
-          data: LibraryPlaylists[];
-          meta: {
-              total: number;
-          };
+    data: {
+      next: string | null;
+      data: LibraryPlaylists[];
+      meta: {
+        total: number;
       };
+    };
   }
 
   /**
@@ -353,40 +353,40 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/artists-uip
    */
   interface Artists extends Resource {
-      type: "artists";
-      attributes?: {
-          editorialNotes?: EditorialNotes;
-          genreNames: string[];
-          name: string;
-          url: string;
+    type: "artists";
+    attributes?: {
+      editorialNotes?: EditorialNotes;
+      genreNames: string[];
+      name: string;
+      url: string;
+    };
+    relationships: {
+      albums: Relationship<Albums>;
+      genres: Relationship<Genres>;
+      "music-videos": Relationship<MusicVideos>;
+      playlists: Relationship<Playlists>;
+      station: Relationship<Stations>;
+    };
+    views: {
+      "appears-on-albums": View<Albums>;
+      "compilation-albums": {
+        href?: string;
+        next?: string;
+        attributes: {
+          title: string;
+        };
+        data: Albums[];
       };
-      relationships: {
-          albums: Relationship<Albums>;
-          genres: Relationship<Genres>;
-          "music-videos": Relationship<MusicVideos>;
-          playlists: Relationship<Playlists>;
-          station: Relationship<Stations>;
-      };
-      views: {
-          "appears-on-albums": View<Albums>;
-          "compilation-albums": {
-              href?: string;
-              next?: string;
-              attributes: {
-                  title: string;
-              };
-              data: Albums[];
-          };
-          "featured-albums": View<Albums>;
-          "featured-playlists": View<Playlists>;
-          "full-albums": View<Albums>;
-          "latest-release": View<Albums>;
-          "live-albums": View<Albums>;
-          "similar-artists": View<Artists>;
-          singles: View<Albums>;
-          "top-music-videos": View<MusicVideos>;
-          "top-songs": View<Songs>;
-      };
+      "featured-albums": View<Albums>;
+      "featured-playlists": View<Playlists>;
+      "full-albums": View<Albums>;
+      "latest-release": View<Albums>;
+      "live-albums": View<Albums>;
+      "similar-artists": View<Artists>;
+      singles: View<Albums>;
+      "top-music-videos": View<MusicVideos>;
+      "top-songs": View<Songs>;
+    };
   }
 
   /**
@@ -394,29 +394,29 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/playlists-ulf
    */
   interface Playlists extends Resource {
-      id: MusicItemID;
-      type: "playlists";
-      attributes?: {
-          artwork?: Artwork;
-          curatorName: string;
-          description?: DescriptionAttribute;
-          isChart: boolean;
-          lastModifiedDate?: string;
-          name: string;
-          playlistType: "editorial" | "external" | "personal-mix" | "replay" | "user-shared";
-          url: string;
-          trackTypes: Array<"music-videos" | "songs">;
-          playParams?: PlayParameters;
-      };
-      relationships: {
-          curator: Relationship<Activities | AppleCurators | Curators>;
-          library: Relationship<LibraryPlaylists>;
-          tracks: Relationship<MusicVideos | Songs>;
-      };
-      views: {
-          "featured-artists": View<Artists>;
-          "more-by-curator": View<Playlists>;
-      };
+    id: MusicItemID;
+    type: "playlists";
+    attributes?: {
+      artwork?: Artwork;
+      curatorName: string;
+      description?: DescriptionAttribute;
+      isChart: boolean;
+      lastModifiedDate?: string;
+      name: string;
+      playlistType: "editorial" | "external" | "personal-mix" | "replay" | "user-shared";
+      url: string;
+      trackTypes: Array<"music-videos" | "songs">;
+      playParams?: PlayParameters;
+    };
+    relationships: {
+      curator: Relationship<Activities | AppleCurators | Curators>;
+      library: Relationship<LibraryPlaylists>;
+      tracks: Relationship<MusicVideos | Songs>;
+    };
+    views: {
+      "featured-artists": View<Artists>;
+      "more-by-curator": View<Playlists>;
+    };
   }
 
   /**
@@ -424,16 +424,16 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/activities-ui5
    */
   interface Activities extends Resource {
-      type: "activities";
-      attributes?: {
-          artwork: Artwork;
-          editorialNotes?: EditorialNotes;
-          name: string;
-          url: string;
-      };
-      relationships: {
-          playlists: Relationship<Playlists>;
-      };
+    type: "activities";
+    attributes?: {
+      artwork: Artwork;
+      editorialNotes?: EditorialNotes;
+      name: string;
+      url: string;
+    };
+    relationships: {
+      playlists: Relationship<Playlists>;
+    };
   }
 
   /**
@@ -441,27 +441,27 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/personalrecommendation
    */
   interface PersonalRecommendation extends Resource {
-      type: "personal-recommendation";
-      attributes?: {
-          kind: "music-recommendations" | "recently-played" | "unknown";
-          nextUpdateDate: string;
-          reason: {
-              stringForDisplay: string;
-          };
-          resourceTypes: string[];
-          title: {
-              stringForDisplay: string;
-          };
+    type: "personal-recommendation";
+    attributes?: {
+      kind: "music-recommendations" | "recently-played" | "unknown";
+      nextUpdateDate: string;
+      reason: {
+        stringForDisplay: string;
       };
-      relationships?: {
-          contents: Array<Relationship<Resource>>;
+      resourceTypes: string[];
+      title: {
+        stringForDisplay: string;
       };
+    };
+    relationships?: {
+      contents: Array<Relationship<Resource>>;
+    };
   }
   interface PlayParameters {
-      id: string;
-      kind: string;
-      globalId?: string;
-      catalogId?: string;
+    id: string;
+    kind: string;
+    globalId?: string;
+    catalogId?: string;
   }
 
   /**
@@ -469,11 +469,11 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/musickit/editorialnotes
    */
   interface EditorialNotes {
-      hashValue: number;
-      name?: string;
-      short?: string;
-      standard?: string;
-      tagline?: string;
+    hashValue: number;
+    name?: string;
+    short?: string;
+    standard?: string;
+    tagline?: string;
   }
 
   /**
@@ -481,14 +481,14 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/musickit/artwork
    */
   interface Artwork {
-      bgColor: string;
-      height: number;
-      width: number;
-      textColor1: string;
-      textColor2: string;
-      textColor3: string;
-      textColor4: string;
-      url: string;
+    bgColor: string;
+    height: number;
+    width: number;
+    textColor1: string;
+    textColor2: string;
+    textColor3: string;
+    textColor4: string;
+    url: string;
   }
 
   /**
@@ -496,9 +496,9 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/preview
    */
   interface Preview {
-      artwork: Artwork;
-      url: string;
-      hlsUrl: string;
+    artwork: Artwork;
+    url: string;
+    hlsUrl: string;
   }
 
   /**
@@ -506,54 +506,52 @@ export declare namespace AppleMusic {
    * https://developer.apple.com/documentation/applemusicapi/descriptionattribute/
    */
   interface DescriptionAttribute {
-      short: string;
-      standard: string;
+    short: string;
+    standard: string;
   }
 
   interface SearchResponse<T> {
-      data: {
-          results: {
-              [key: string]: SearchResult<T>; // This allows multiple dynamic keys
-          };
+    data: {
+      results: {
+        [key: string]: SearchResult<T>; // This allows multiple dynamic keys
       };
-      href?: string;
-      next?: string;
-      meta?: {
-          results: {
-              order: string[];
-              rawOrder: string[];
-          };
+    };
+    href?: string;
+    next?: string;
+    meta?: {
+      results: {
+        order: string[];
+        rawOrder: string[];
       };
+    };
   }
 
   interface SongSearchResponse {
-      data: {
-          results: {
-              songs: SearchResult<Songs>;
-          };
+    results: {
+      songs: SearchResult<Songs>;
+    };
+    href?: string;
+    next?: string;
+    meta?: {
+      results: {
+        order: string[];
+        rawOrder: string[];
       };
-      href?: string;
-      next?: string;
-      meta?: {
-          results: {
-              order: string[];
-              rawOrder: string[];
-          };
-      };
+    };
   }
 
   interface SearchResult<T> {
-      data: T[];
-      href?: string;
-      next?: string;
+    data: T[];
+    href?: string;
+    next?: string;
   }
 
   interface SearchChartResult<T> {
-      chart: string;
-      data: T[];
-      href?: string;
-      name: string;
-      next?: string;
+    chart: string;
+    data: T[];
+    href?: string;
+    name: string;
+    next?: string;
   }
 
   type QueryParameters = Record<string, any>;
