@@ -30,7 +30,7 @@ export enum SupabaseColumnsPlaylistItems {
   ImageUrl = 'imageurl',
   Position = 'position',
   Duration = 'duration',
-  ReleaseDate = 'release_date',
+  ReleaseDate = 'releasedate',
   Bpm = 'bpm',
   Key = 'key',
   Energy = 'energy',
