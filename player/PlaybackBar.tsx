@@ -3,18 +3,17 @@ import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { PlayerManager } from './PlayerManager';
 import { PlaybackState } from './MusicPlayerBase';
-import { useAuth } from '../../../components/AuthProvider';
 import { cn } from '../../../lib/utils';
 import { DJPlaylistItem } from '../interfaces/supabase';
 import { toClockTime } from '../helpers/time';
+import { User } from '@supabase/supabase-js';
 
-const PlaybackBar = () => {
+const PlaybackBar = ({ user }: { user: User | null }) => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isSeeking, setIsSeeking] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<DJPlaylistItem | null>(null);
-  const { user } = useAuth();
   const [isBarVisible, setIsBarVisible] = useState(false);
 
   useEffect(() => {
