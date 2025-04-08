@@ -34,6 +34,7 @@ export enum SupabaseColumnsPlaylistItems {
   ReleaseDate = 'releasedate', // test
   Bpm = 'bpm',
   Key = 'key',
+  Isrc = 'isrc',
   Energy = 'energy',
   Danceability = 'danceability',
   Happiness = 'happiness',
