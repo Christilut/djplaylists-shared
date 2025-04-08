@@ -106,10 +106,10 @@ export interface DJPlaylistItem {
   artist: string
   album: string
   imageurl: string
-  duration: number
-  releasedate: Date
-  bpm: number
-  key: string
+  duration?: number
+  releasedate?: Date
+  bpm?: number
+  key?: string
   energy?: number
   danceability?: number
   happiness?: number

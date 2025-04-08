@@ -565,120 +565,12 @@ export declare namespace AppleMusic {
   type QueryParameters = Record<string, any>;
 }
 
-export interface IAppleMusicTrack {
-  id: string
-  artistName: string
-  name: string
-  releaseDate: string
-  url: string
-  albumName: string
-  previews: {
-    url: string
-  }[]
-  artwork: {
-    url: string
-  }
-  durationInMillis: number
-}
-
-export interface IAppleMusicAlbum {
-  artistName: string
-  genreName: string[]
-  isCompilation: boolean
-  isComplete: boolean
-  isSingle: boolean
-  name: string
-  recordLabel: string
-  releaseDate: string // ISO
-  trackCount: number
-  upc: string
-  url: string
-}
-
-export interface IAppeMusicTrackData {
-  attributes: IAppleMusicTrack
-  href: string
-  id: string
-  type: 'songs'
-}
-
-export interface IAppleMusicPlaylist {
-  name: string
-  url: string
-  id: string
-  // more
-}
-
-export interface IAppleMusicSearchResponse {
-  results?: {
-    songs: {
-      data: IAppeMusicTrackData[]
-    }
-  }
-}
-
-export interface IAppleMusicSongResponse {
-  data: IAppeMusicTrackData[]
-  next?: string
-}
-
-export interface IAppleMusicAlbumResponse {
-  data: {
-    attributes: IAppleMusicAlbum
-    href: string
-    id: string
-    type: 'albums'
-    relationships: {
-      curator: unknown
-      tracks: {
-        data: IAppeMusicTrackData[]
-        href: string
-        next?: string
-      }
-    }
-  }[]
-}
-
-export interface IAppleMusicPlaylistResponse {
-  data: {
-    attributes: IAppleMusicPlaylist
-    href: string
-    id: string
-    type: 'playlists'
-    relationships: {
-      artists: {
-        data: unknown[]
-      }
-      tracks: {
-        data: IAppeMusicTrackData[]
-        href: string
-        next?: string
-      }
-    }
-  }[]
-}
-
-export interface IAppleMusicGenresResponse {
-  data: IAppleMusicGenre[]
-}
-
-export interface IAppleMusicGenre {
-  attributes: {
-    parentName: 'Music'
-    name: string
-    parentId: string
-  }
-  href: string
-  id: string
-  type: 'genres'
-}
-
 export interface IAppleMusicChartResponse {
   meta: unknown
   results: {
     songs: {
       chart: 'most-played'
-      data: IAppeMusicTrackData[]
+      data: AppleMusic.Songs[]
       href: string
       name: string
       next: string
