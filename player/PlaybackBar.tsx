@@ -145,7 +145,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
 
   return (
     <div className="fixed z-50 bottom-0 left-0 right-0 border-t border-white/10 pt-2 backdrop-blur bg-stone-800/80">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-[1104px] px-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
