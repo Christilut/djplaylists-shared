@@ -145,8 +145,8 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
 
   return (
     <div className="fixed z-50 bottom-0 left-0 right-0 border-t border-white/10 pt-2 backdrop-blur bg-stone-800/80">
-      <div className="mx-auto max-w-[1104px] px-2">
-        <div className="flex items-center justify-between">
+      <div className="mx-auto max-w-[1104px] px-2 relative">
+        <div className="flex items-center justify-between sm:pt-0 pt-12">
           <div className="flex items-center gap-4">
             <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
               <img
@@ -161,40 +161,40 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
             </div>
           </div>
 
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[25px] flex items-center gap-2">
-            <Button
-              variant="icon"
-              size="icon"
-              onClick={handlePrevious}
-              className="h-10 w-10"
-            >
-              <SkipBack className="h-5 w-5" />
-            </Button>
-            <Button
-              variant="icon"
-              size="icon"
-              onClick={handlePlayPause}
-              className="h-10 w-10"
-            >
-              {isPlaying ? (
-                <Pause className="h-5 w-5" />
-              ) : (
-                <Play className="h-5 w-5" />
-              )}
-            </Button>
-            <Button
-              variant="icon"
-              size="icon"
-              onClick={handleNext}
-              className="h-10 w-10"
-            >
-              <SkipForward className="h-5 w-5" />
-            </Button>
-          </div>
-
           <div className="text-sm text-white">
             {toClockTime(currentTime)} / {toClockTime(duration)}
           </div>
+        </div>
+
+        <div className="absolute left-1/2 top-[25px] -translate-x-1/2 -translate-y-1/2 flex items-center gap-2">
+          <Button
+            variant="icon"
+            size="icon"
+            onClick={handlePrevious}
+            className="h-10 w-10"
+          >
+            <SkipBack className="h-5 w-5" />
+          </Button>
+          <Button
+            variant="icon"
+            size="icon"
+            onClick={handlePlayPause}
+            className="h-10 w-10"
+          >
+            {isPlaying ? (
+              <Pause className="h-5 w-5" />
+            ) : (
+              <Play className="h-5 w-5" />
+            )}
+          </Button>
+          <Button
+            variant="icon"
+            size="icon"
+            onClick={handleNext}
+            className="h-10 w-10"
+          >
+            <SkipForward className="h-5 w-5" />
+          </Button>
         </div>
 
         <div className={cn(
