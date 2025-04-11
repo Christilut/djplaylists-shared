@@ -31,6 +31,7 @@ export interface PlaylistGenerationParams {
   energy: EnergyOptions;
   startingTrackIds: string[];
   yearRange: [number, number];
+  includeSearchTracks: boolean;
 } 
 
 export interface PlaylistGenerationResponse {
