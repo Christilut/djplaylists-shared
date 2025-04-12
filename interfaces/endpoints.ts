@@ -30,6 +30,7 @@ export interface PlaylistGenerationParams {
   popularity: MoodOptions;
   energy: EnergyOptions;
   startingTrackIds: string[];
+  extraPlaylists?: string[];
   yearRange: [number, number];
   includeSearchTracks: boolean;
 } 
