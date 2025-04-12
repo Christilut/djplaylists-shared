@@ -119,6 +119,9 @@ export interface SpotifySearchResponse {
   tracks: {
     items: ISpotifyTrack[]
   }
+  playlists?: {
+    items: ISpotifyPlaylist[]
+  }
 }
 
 export interface SpotifyGetTracksResponse {
