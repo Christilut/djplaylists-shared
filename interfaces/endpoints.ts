@@ -31,6 +31,8 @@ export interface PlaylistGenerationParams {
   energy: EnergyOptions;
   startingTrackIds: string[];
   extraPlaylists?: string[];
+  extraPlaylistsSelectionMethod?: string;
+  extraPlaylistsPercentage?: number;
   yearRange: [number, number];
   includeSearchTracks: boolean;
 } 
