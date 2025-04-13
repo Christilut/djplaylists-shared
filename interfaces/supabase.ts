@@ -10,7 +10,7 @@ export enum SupabaseColumnsPlaylists {
   Id = 'id',
   Title = 'title',
   Type = 'type',
-  Tag = 'tag',
+  Tags = 'tags',
   ImageUrl = 'imageurl',
   Description = 'description',
   CreatedBy = 'created_by',
