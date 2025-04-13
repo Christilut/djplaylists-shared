@@ -41,7 +41,7 @@ export interface PlaylistGenerationParams {
   popularity: MoodOptions;
   energy: EnergyOptions;
   startingTrackIds: string[];
-  extraPlaylists: string[];
+  extraPlaylistIds: string[];
   extraPlaylistsSelectionMethod: ExtraPlaylistsSelectionMethod;
   extraPlaylistsPercentage: number;
   yearRange: [number, number];
