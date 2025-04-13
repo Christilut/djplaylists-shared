@@ -18,6 +18,17 @@ export enum EnergyOptions {
   Any = 'any'
 }
 
+export enum ExtraPlaylistsSelectionMethod {
+  Random = 'random',
+  MostPopular = 'popular_most',
+  LeastPopular = 'popular_least',
+  HighestEnergy = 'energy_highest',
+  HighestDanceability = 'danceability_highest',
+  HighestHappiness = 'happiness_highest',
+  NewestReleaseYear = 'release_newest',
+  OldestReleaseYear = 'release_oldest'
+}
+
 export interface PlaylistGenerationParams {
   name: string;
   description: string;
@@ -31,7 +42,7 @@ export interface PlaylistGenerationParams {
   energy: EnergyOptions;
   startingTrackIds: string[];
   extraPlaylists?: string[];
-  extraPlaylistsSelectionMethod?: string;
+  extraPlaylistsSelectionMethod?: ExtraPlaylistsSelectionMethod;
   extraPlaylistsPercentage?: number;
   yearRange: [number, number];
   includeSearchTracks: boolean;
