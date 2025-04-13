@@ -43,7 +43,7 @@ export interface PlaylistGenerationParams {
   startingTrackIds: string[];
   extraPlaylistIds: string[];
   extraPlaylistsSelectionMethod: ExtraPlaylistsSelectionMethod;
-  extraPlaylistsPercentage: number;
+  extraPlaylistsRatio: number;
   yearRange: [number, number];
   includeSearchTracks: boolean;
 } 
