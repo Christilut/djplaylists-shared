@@ -76,7 +76,7 @@ export class DJPlaylist {
   type?: PlaylistType
   imageurl?: string
   description?: string
-  tag?: string
+  tags?: string[]
   created_by?: string
   created_at?: Date
   trending?: boolean
