@@ -3,6 +3,7 @@ import { MusicPlayerBase } from './MusicPlayerBase';
 
 export class MusicPlayerUrl extends MusicPlayerBase {
   private audioElement: HTMLAudioElement | null = null;
+  private nextAudioElement: HTMLAudioElement | null = null;
   private onPlayCallback: (() => void) | null = null;
   private onPauseCallback: (() => void) | null = null;
   private onEndCallback: (() => void) | null = null;
@@ -11,6 +12,7 @@ export class MusicPlayerUrl extends MusicPlayerBase {
   constructor() {
     super();
     this.audioElement = new Audio();
+    this.nextAudioElement = new Audio();
     this.setupEventListeners();
   }
 
@@ -38,6 +40,17 @@ export class MusicPlayerUrl extends MusicPlayerBase {
     });
   }
 
+  private preloadNextTrack() {
+    if (!this.nextAudioElement || !this.tracks) return;
+    
+    const nextIndex = this.playbackState.currentTrackIndex + 1;
+    if (nextIndex < this.tracks.length) {
+      const nextTrack = this.tracks[nextIndex];
+      this.nextAudioElement.src = nextTrack.applemusic_preview || '';
+      this.nextAudioElement.load();
+    }
+  }
+
   public async play(tracks: DJPlaylistItem[], startIndex: number): Promise<void> {
     if (!this.audioElement) return;
     if (!tracks || tracks.length === 0) return;
@@ -51,6 +64,9 @@ export class MusicPlayerUrl extends MusicPlayerBase {
 
     // Set volume before playing
     this.audioElement.volume = this.playbackState.volume;
+
+    // Preload the next track
+    this.preloadNextTrack();
 
     // Play the audio
     await this.audioElement.play();
@@ -87,6 +103,11 @@ export class MusicPlayerUrl extends MusicPlayerBase {
       this.audioElement.pause();
       this.audioElement.remove();
       this.audioElement = null;
+    }
+    if (this.nextAudioElement) {
+      this.nextAudioElement.pause();
+      this.nextAudioElement.remove();
+      this.nextAudioElement = null;
     }
   }
 
