@@ -34,6 +34,7 @@ export interface PlaylistGenerationParams {
   description: string;
   trackCount: number;
   type: PlaylistType;
+  tags: string[];
   maintainBpm: boolean;
   harmonicMixing: boolean;
   happiness: MoodOptions;
