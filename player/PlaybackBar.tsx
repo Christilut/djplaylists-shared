@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
+import { Pause, Play, SkipBack, SkipForward, Loader2 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { PlayerManager } from './PlayerManager';
 import { PlaybackState } from './MusicPlayerBase';
@@ -13,6 +13,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
   const [duration, setDuration] = useState(0);
   const [isSeeking, setIsSeeking] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<DJPlaylistItem | null>(null);
   const [isBarVisible, setIsBarVisible] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -91,12 +92,14 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
         setCurrentTrack(PlayerManager.player.getCurrentTrack());
         const state = PlayerManager.player.getPlaybackState();
         setIsPlaying(state.isPlaying);
+        setIsLoading(state.isLoading);
         setCurrentTime(state.currentTime);
         setDuration(state.duration);
 
         PlayerManager.player.addStateListener((state: PlaybackState) => {
           setCurrentTrack(PlayerManager.player?.getCurrentTrack() || null);
           setIsPlaying(state.isPlaying);
+          setIsLoading(state.isLoading);
 
           if (state.isLoading) {
             setCurrentTime(0)
@@ -184,6 +187,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
             size="icon"
             onClick={handlePrevious}
             className="h-10 w-10"
+            disabled={isLoading}
           >
             <SkipBack className="h-5 w-5" />
           </Button>
@@ -192,8 +196,11 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
             size="icon"
             onClick={handlePlayPause}
             className="h-10 w-10"
+            disabled={isLoading}
           >
-            {isPlaying ? (
+            {isLoading ? (
+              <Loader2 className="h-5 w-5 animate-spin text-white" />
+            ) : isPlaying ? (
               <Pause className="h-5 w-5" />
             ) : (
               <Play className="h-5 w-5" />
@@ -204,6 +211,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
             size="icon"
             onClick={handleNext}
             className="h-10 w-10"
+            disabled={isLoading}
           >
             <SkipForward className="h-5 w-5" />
           </Button>
@@ -211,7 +219,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
 
         <div className={cn(
           "mt-2 pb-2 pt-1",
-          currentTime <= 0 || currentTime > duration && "invisible"
+          (currentTime <= 0 || currentTime > duration || isLoading) && "invisible"
         )}
         >
           <div
