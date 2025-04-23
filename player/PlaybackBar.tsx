@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Pause, Play, SkipBack, SkipForward } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { PlayerManager } from './PlayerManager';
 import { PlaybackState } from './MusicPlayerBase';
 import { cn } from '../../../lib/utils';
@@ -15,6 +15,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState<DJPlaylistItem | null>(null);
   const [isBarVisible, setIsBarVisible] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -75,9 +76,15 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
     };
   }, [isPlaying, isSeeking]);
 
+
   useEffect(() => {
     // Add state listener to update when track or playback state changes
-    setTimeout(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    
+    timeoutRef.current = setTimeout(() => {
+      console.log(user)
       PlayerManager.initializePlayer(!!user);
 
       // Initial setup
@@ -105,7 +112,13 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
           }
         });
       }
-    }, 500);
+    }, 1500);
+    
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, [user]);
 
   const handlePlayPause = async () => {
