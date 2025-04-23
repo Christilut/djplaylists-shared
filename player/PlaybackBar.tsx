@@ -84,7 +84,6 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
     }
     
     timeoutRef.current = setTimeout(() => {
-      console.log(user)
       PlayerManager.initializePlayer(!!user);
 
       // Initial setup

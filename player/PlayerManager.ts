@@ -1,3 +1,4 @@
+import { MusicPlayerApple } from './MusicPlayerApple';
 import { MusicPlayerBase } from './MusicPlayerBase';
 import { MusicPlayerUrl } from './MusicPlayerUrl';
 
@@ -9,7 +10,8 @@ export abstract class PlayerManager {
 
     // Create new player based on login status
     if (isLoggedIn) {
-      throw new Error('Apple Music is not supported yet');
+      const player = new MusicPlayerApple();
+      this.player = player;
     } else {
       const player = new MusicPlayerUrl();
       this.player = player;
