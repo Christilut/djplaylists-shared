@@ -1,4 +1,3 @@
-import { Smile } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 
 const HappinessCell = ({ value }: { value: number | undefined }) => {
@@ -8,9 +7,9 @@ const HappinessCell = ({ value }: { value: number | undefined }) => {
     <div className={cn('text-center', className, value > 0.7 && 'text-green-500')}>
       <div className='flex justify-center gap-1'>
         {value === undefined || value === null ? '-' : `${Math.round(value * 100)}%`}
-        {typeof value === 'number' && value > 0.7 && (
+        {/* {typeof value === 'number' && value > 0.7 && (
           <Smile size={20} />
-        )}
+        )} */}
       </div>
     </div>
   );
