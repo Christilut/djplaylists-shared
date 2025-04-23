@@ -16,7 +16,7 @@ const DateCell: React.FC<DateCellProps> = ({ track, isFirstRow = false }) => {
     month: 'long',
     day: 'numeric'
   });
-  const tooltipText = `${track.album} was released on ${fullDate}`
+  const tooltipText = `<b>${track.album}</b> was released on ${fullDate}`
 
   if (track.releasedate) {
     return (
@@ -28,7 +28,7 @@ const DateCell: React.FC<DateCellProps> = ({ track, isFirstRow = false }) => {
             </div>
           </TooltipTrigger>
           <TooltipContent side={isFirstRow ? "bottom" : "top"} className="max-w-[300px]">
-            {tooltipText}
+            <div dangerouslySetInnerHTML={{ __html: tooltipText }} />
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
