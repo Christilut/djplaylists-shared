@@ -29,6 +29,11 @@ export enum ExtraPlaylistsSelectionMethod {
   OldestReleaseYear = 'release_oldest'
 }
 
+export enum StreamingService {
+  AppleMusic = 'applemusic',
+  Spotify = 'spotify'
+}
+
 export interface PlaylistGenerationParams {
   name: string;
   description: string;
@@ -47,6 +52,7 @@ export interface PlaylistGenerationParams {
   extraPlaylistsRatio: number;
   yearRange: [number, number];
   includeSearchTracks: boolean;
+  streamingService: StreamingService;
 } 
 
 export interface PlaylistGenerationResponse {
