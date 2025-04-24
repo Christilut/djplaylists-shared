@@ -52,7 +52,7 @@ export interface PlaylistGenerationParams {
   extraPlaylistsRatio: number;
   yearRange: [number, number];
   includeSearchTracks: boolean;
-  streamingService: StreamingService;
+  streamingServices: StreamingService[];
 } 
 
 export interface PlaylistGenerationResponse {
