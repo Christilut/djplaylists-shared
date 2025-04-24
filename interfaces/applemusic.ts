@@ -560,6 +560,7 @@ export declare namespace AppleMusic {
       filters: unknown
     }
     isrc: string
+    isrcs: string[]
   }
 
   type QueryParameters = Record<string, any>;
