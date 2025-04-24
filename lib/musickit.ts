@@ -13,8 +13,9 @@ export abstract class MusicKitClient {
     }
 
     try {
-      const response = await api.get('/api/utility/applemusic-dev-token');
-      const developerToken = response.data.developerToken;
+      // const response = await api.get('/api/utility/applemusic-dev-token');
+      // const developerToken = response.data.developerToken;
+      const developerToken = import.meta.env.VITE_APPLEMUSIC_DEVELOPER_TOKEN;
 
       // Configure and initialize MusicKit
       MusicKitClient.musicKit = await window.MusicKit.configure({
