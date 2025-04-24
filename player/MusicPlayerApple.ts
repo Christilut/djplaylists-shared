@@ -1,6 +1,6 @@
 import { DJPlaylistItem } from '../interfaces/supabase';
 import { MusicPlayerBase } from './MusicPlayerBase';
-import { MusicKitClient } from '../../../lib/musickit';
+import { MusicKitClient } from '../lib/musickit';
 
 export class MusicPlayerApple extends MusicPlayerBase {
   private onPlayCallback: (() => void) | null = null;
