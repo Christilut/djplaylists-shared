@@ -8,11 +8,9 @@ const KeyCell = ({ value, className }: { value: string | undefined, className?: 
   const color = KeyConverter.getKeyNumberColor(keyNumber);
 
   return (
-    <td>
-      <div className={cn("text-center", className)}>
-        <span style={{ color }}>{value}</span>
-      </div>
-    </td>
+    <div className={cn("text-center", className)}>
+      <span style={{ color }}>{value}</span>
+    </div>
   );
 };
 
