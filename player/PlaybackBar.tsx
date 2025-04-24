@@ -3,10 +3,12 @@ import { Pause, Play, SkipBack, SkipForward, Loader2 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { PlayerManager } from './PlayerManager';
 import { PlaybackState } from './MusicPlayerBase';
-import { cn } from '../../../lib/utils';
 import { DJPlaylistItem } from '../interfaces/supabase';
 import { toClockTime } from '../helpers/time';
 import { User } from '@supabase/supabase-js';
+import { Setting } from '../../../lib/settings';
+import { AudioPlaybackType } from '../../../interface/settings';
+import { cn } from '../../../lib/utils';
 
 const PlaybackBar = ({ user }: { user: User | null }) => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -85,8 +87,6 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
     }
     
     timeoutRef.current = setTimeout(() => {
-      PlayerManager.initializePlayer(!!user);
-
       // Initial setup
       if (PlayerManager.player) {
         setCurrentTrack(PlayerManager.player.getCurrentTrack());
@@ -114,7 +114,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
           }
         });
       }
-    }, 1500);
+    }, 500);
     
     return () => {
       if (timeoutRef.current) {
