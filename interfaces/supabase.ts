@@ -1,5 +1,12 @@
 import { PlaylistType } from './playlist'
 
+export enum StreamingService {
+  AppleMusic = 'applemusic',
+  Spotify = 'spotify',
+  Beatport = 'beatport',
+  Tidal = 'tidal',
+}
+
 export enum SupabaseTables {
   Playlists = 'playlists',
   PlaylistItems = 'playlist_items',
@@ -18,6 +25,7 @@ export enum SupabaseColumnsPlaylists {
   Trending = 'trending',
   Published = 'published',
   LiveUpdating = 'live_updating',
+  IgnoredServices = 'ignored_services',
 }
 
 export enum SupabaseColumnsPlaylistItems {
@@ -82,6 +90,7 @@ export class DJPlaylist {
   trending?: boolean
   published?: boolean
   live_updating?: boolean
+  ignored_services?: StreamingService[]
 
   // For UI
   _selected?: boolean
