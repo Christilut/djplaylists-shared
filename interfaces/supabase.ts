@@ -105,6 +105,14 @@ export class DJPlaylist {
       this._items = itemsData
     }
   }
+
+  get isAppleMusicDisabled() {
+    return this.ignored_services?.includes(StreamingService.AppleMusic) || this._items?.every(x => !x.applemusic_id);
+  }
+
+  get isBeatportDisabled() {
+    return this.ignored_services?.includes(StreamingService.Beatport) || this._items?.every(x => !x.beatport_id);
+  }
 }
 
 export interface DJPlaylistItem {
