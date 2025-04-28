@@ -1,5 +1,3 @@
-import api from './axios';
-
 export abstract class MusicKitClient {
   static musicKit: MusicKit.MusicKitInstance;
 
