@@ -7,6 +7,7 @@ const ACCESS_TOKEN_URI = 'https://api.rekord.cloud/public/auth/beatport/token-ac
 const REFRESH_TOKEN_URI = 'https://api.rekord.cloud/public/auth/beatport/token-refresh'
 
 export abstract class BeatportAuth {
+  static userId: string = ''
   static accessToken: string = ''
   static refreshToken: string = ''
   static expires: Date | null = null
@@ -15,7 +16,7 @@ export abstract class BeatportAuth {
     return !!BeatportAuth.accessToken
   }
 
-  static get redirectUri(): string {
+  static createRedirectUri(userId: string): string {
     return AUTH_REDIRECT_URI + `?userId=${userId}`
   }
 
@@ -63,14 +64,16 @@ export abstract class BeatportAuth {
     BeatportAuth.save()
   }
 
-  static openLogin() {
+  static openLogin(userId: string) {
+    BeatportAuth.userId = userId
+
     console.log('opening beatport authorize link')
 
     const params = new URLSearchParams()
 
     params.append('client_id', import.meta.env.VITE_BEATPORT_CLIENT_ID)
     params.append('response_type', 'code')
-    params.append('redirect_uri', BeatportAuth.redirectUri)
+    params.append('redirect_uri', BeatportAuth.createRedirectUri(userId))
 
     const uri: string = `${BEATPORT_API_URL}/auth/o/authorize/?${params.toString()}`
 
@@ -79,7 +82,7 @@ export abstract class BeatportAuth {
 
   static async authenticate() {
     const { data }: { data: IBeatportAuthResponse } = await Axios.post(ACCESS_TOKEN_URI, {
-      redirectUri: BeatportAuth.redirectUri
+      redirectUri: BeatportAuth.createRedirectUri(BeatportAuth.userId)
     })
 
     if (data) {
