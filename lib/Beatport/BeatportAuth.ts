@@ -13,7 +13,7 @@ export abstract class BeatportAuth {
   static refreshToken: string = ''
   static expires: Date | null = null
 
-  static get isAuthenticated(): boolean {
+  static get isAuthorized(): boolean {
     return !!BeatportAuth.accessToken
   }
 
@@ -84,28 +84,34 @@ export abstract class BeatportAuth {
   }
 
   static async authenticate(): Promise<boolean> {
-    const { data }: { data: IBeatportAuthResponse } = await Axios.post(ACCESS_TOKEN_URI, {
-      redirectUri: BeatportAuth.createRedirectUri(BeatportAuth.userId),
-      userId: BeatportAuth.userId
-    })
-
-    if (data?.access_token) {
-      BeatportAuth.setToken({
-        accessToken: data.access_token,
-        expiresInSeconds: data.expires_in,
-        refreshToken: data.refresh_token
+    try {
+      const { data }: { data: IBeatportAuthResponse } = await Axios.post(ACCESS_TOKEN_URI, {
+        redirectUri: BeatportAuth.createRedirectUri(BeatportAuth.userId),
+        userId: BeatportAuth.userId
       })
 
-      console.log('succesfully authenticated beatport')
+      if (data?.access_token) {
+        BeatportAuth.setToken({
+          accessToken: data.access_token,
+          expiresInSeconds: data.expires_in,
+          refreshToken: data.refresh_token
+        })
 
-      return true
+        console.log('succesfully authenticated beatport')
+
+        return true
+      }
+
+      return false
+    } catch (error) {
+      console.error(error)
+
+      return false
     }
-
-    return false
   }
 
   static async tryRefreshAccessToken() {
-    if (BeatportAuth.isAuthenticated && BeatportAuth.expires && BeatportAuth.expires.getTime() < new Date().getTime() + 60 * 60 * 1000) { // Refresh 60 minutes before it expires
+    if (BeatportAuth.isAuthorized && BeatportAuth.expires && BeatportAuth.expires.getTime() < new Date().getTime() + 60 * 60 * 1000) { // Refresh 60 minutes before it expires
       console.log('attempting to refresh beatport access token')
 
       try {
