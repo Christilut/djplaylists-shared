@@ -1,5 +1,6 @@
 import Axios from 'axios'
 import { BEATPORT_API_URL, IBeatportAuthResponse } from './interface'
+import { supabase } from '../../../../integrations/supabase/client'
 
 const STORAGE_KEY_BEATPORT_AUTH = 'beatport-auth'
 const AUTH_REDIRECT_URI = 'https://api.rekord.cloud/public/auth/beatport/token'
@@ -66,8 +67,8 @@ export abstract class BeatportAuth {
     console.log('beatport auth token set')
   }
 
-  static openLogin(userId: string) {
-    BeatportAuth.userId = userId
+  static async openLogin() {
+    BeatportAuth.userId = (await supabase.auth.getUser()).data.user.id
 
     console.log('opening beatport authorize link')
 
@@ -75,7 +76,7 @@ export abstract class BeatportAuth {
 
     params.append('client_id', import.meta.env.VITE_BEATPORT_CLIENT_ID)
     params.append('response_type', 'code')
-    params.append('redirect_uri', BeatportAuth.createRedirectUri(userId))
+    params.append('redirect_uri', BeatportAuth.createRedirectUri(BeatportAuth.userId))
 
     const uri: string = `${BEATPORT_API_URL}/auth/o/authorize/?${params.toString()}`
 
@@ -84,7 +85,8 @@ export abstract class BeatportAuth {
 
   static async authenticate(): Promise<boolean> {
     const { data }: { data: IBeatportAuthResponse } = await Axios.post(ACCESS_TOKEN_URI, {
-      redirectUri: BeatportAuth.createRedirectUri(BeatportAuth.userId)
+      redirectUri: BeatportAuth.createRedirectUri(BeatportAuth.userId),
+      userId: BeatportAuth.userId
     })
 
     if (data?.access_token) {
