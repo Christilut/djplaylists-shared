@@ -82,12 +82,12 @@ export abstract class BeatportAuth {
     window.open(uri, '_blank')
   }
 
-  static async authenticate() {
+  static async authenticate(): Promise<boolean> {
     const { data }: { data: IBeatportAuthResponse } = await Axios.post(ACCESS_TOKEN_URI, {
       redirectUri: BeatportAuth.createRedirectUri(BeatportAuth.userId)
     })
 
-    if (data) {
+    if (data?.access_token) {
       BeatportAuth.setToken({
         accessToken: data.access_token,
         expiresInSeconds: data.expires_in,
@@ -95,7 +95,11 @@ export abstract class BeatportAuth {
       })
 
       console.log('succesfully authenticated beatport')
+
+      return true
     }
+
+    return false
   }
 
   static async tryRefreshAccessToken() {
