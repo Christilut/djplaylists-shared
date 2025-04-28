@@ -62,6 +62,8 @@ export abstract class BeatportAuth {
     BeatportAuth.expires = new Date((new Date().getTime() + expiresInSeconds * 1000))
 
     BeatportAuth.save()
+
+    console.log('beatport auth token set')
   }
 
   static openLogin(userId: string) {
