@@ -1,6 +1,10 @@
 import { DJPlaylistItem } from '../interfaces/supabase';
 import { MusicPlayerBase } from './MusicPlayerBase';
 
+function getPreviewUrl(track: DJPlaylistItem): string {
+  return track.applemusic_preview ?? track.beatport_preview ?? track.spotify_preview ?? '';
+}
+
 export class MusicPlayerUrl extends MusicPlayerBase {
   private audioElement: HTMLAudioElement | null = null;
   private nextAudioElement: HTMLAudioElement | null = null;
@@ -46,7 +50,7 @@ export class MusicPlayerUrl extends MusicPlayerBase {
     const nextIndex = this.playbackState.currentTrackIndex + 1;
     if (nextIndex < this.tracks.length) {
       const nextTrack = this.tracks[nextIndex];
-      this.nextAudioElement.src = nextTrack.applemusic_preview || '';
+      this.nextAudioElement.src = getPreviewUrl(nextTrack);
       this.nextAudioElement.load();
     }
   }
@@ -60,7 +64,7 @@ export class MusicPlayerUrl extends MusicPlayerBase {
     this.currentTrack = tracks[startIndex];
     this.updateState({ currentTrackIndex: startIndex });
 
-    this.audioElement.src = this.currentTrack.applemusic_preview || '';
+    this.audioElement.src = getPreviewUrl(this.currentTrack);
 
     // Set volume before playing
     this.audioElement.volume = this.playbackState.volume;
