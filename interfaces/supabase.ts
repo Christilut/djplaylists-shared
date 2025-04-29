@@ -95,9 +95,9 @@ export class DJPlaylist {
   // For UI
   _selected?: boolean
   _externalId?: string // Used to keep AM playlist ID from UI
-  _items?: DJPlaylistItem[]
+  _items?: DJTrack[]
 
-  constructor(playlistData: DJPlaylist, itemsData?: DJPlaylistItem[]) {
+  constructor(playlistData: DJPlaylist, itemsData?: DJTrack[]) {
     Object.assign(this, playlistData);
 
     // Add items if provided
@@ -115,7 +115,7 @@ export class DJPlaylist {
   }
 }
 
-export interface DJPlaylistItem {
+export interface DJTrack {
   id?: string // Row ID
   position?: number // Index in playlist
   playlist_id?: number // Playlist ID
