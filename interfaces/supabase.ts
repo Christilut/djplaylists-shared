@@ -9,7 +9,7 @@ export enum StreamingService {
 
 export enum SupabaseTables {
   Playlists = 'playlists',
-  PlaylistItems = 'playlist_items',
+  Tracks = 'tracks',
   Users = 'users',
 }
 
@@ -28,7 +28,7 @@ export enum SupabaseColumnsPlaylists {
   IgnoredServices = 'ignored_services',
 }
 
-export enum SupabaseColumnsPlaylistItems {
+export enum SupabaseColumnsTracks {
   Id = 'id',
   PlaylistId = 'playlist_id',
   ItemId = 'item_id',
@@ -79,7 +79,7 @@ export enum SupabaseColumnsUsers {
 }
 
 export class DJPlaylist {
-  id?: string
+  id?: number
   title?: string
   type?: PlaylistType
   imageurl?: string
@@ -118,7 +118,7 @@ export class DJPlaylist {
 export interface DJPlaylistItem {
   id?: string // Row ID
   position?: number // Index in playlist
-  playlist_id?: string // Playlist ID
+  playlist_id?: number // Playlist ID
   created_at?: Date // Row creation date
   
   // Track metadata
