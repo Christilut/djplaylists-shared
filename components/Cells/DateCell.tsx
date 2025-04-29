@@ -1,9 +1,9 @@
 import React from 'react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { DJPlaylistItem } from '../../interfaces/supabase';
+import { DJTrack } from '../../interfaces/supabase';
 
 interface DateCellProps {
-  track: DJPlaylistItem;
+  track: DJTrack;
   isFirstRow?: boolean;
 }
 

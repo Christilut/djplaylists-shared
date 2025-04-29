@@ -1,4 +1,4 @@
-import { DJPlaylistItem } from '../interfaces/supabase';
+import { DJTrack } from '../interfaces/supabase';
 
 export interface PlaybackState {
   isPlaying: boolean;
@@ -12,8 +12,8 @@ export interface PlaybackState {
 export abstract class MusicPlayerBase {
   protected playbackState: PlaybackState;
   private stateListeners: ((state: PlaybackState) => void)[] = [];
-  protected tracks: DJPlaylistItem[] = [];
-  protected currentTrack: DJPlaylistItem | null = null;
+  protected tracks: DJTrack[] = [];
+  protected currentTrack: DJTrack | null = null;
 
   constructor() {
     this.playbackState = {
@@ -27,7 +27,7 @@ export abstract class MusicPlayerBase {
   }
 
   // Abstract methods that must be implemented by child classes
-  abstract play(tracks: DJPlaylistItem[], startIndex: number): Promise<void>;
+  abstract play(tracks: DJTrack[], startIndex: number): Promise<void>;
   abstract pause(): void;
   abstract resume(): void;
   abstract seek(time: number): void;
@@ -36,7 +36,7 @@ export abstract class MusicPlayerBase {
   abstract getDuration(): number;
 
   // Common methods for all players
-  public getCurrentTrack(): DJPlaylistItem | null {
+  public getCurrentTrack(): DJTrack | null {
     return this.currentTrack;
   }
 
