@@ -1,7 +1,7 @@
-import { DJPlaylistItem } from '../interfaces/supabase';
+import { DJTrack } from '../interfaces/supabase';
 import { MusicPlayerBase } from './MusicPlayerBase';
 
-function getPreviewUrl(track: DJPlaylistItem): string {
+function getPreviewUrl(track: DJTrack): string {
   return track.applemusic_preview ?? track.beatport_preview ?? track.spotify_preview ?? '';
 }
 
@@ -55,7 +55,7 @@ export class MusicPlayerUrl extends MusicPlayerBase {
     }
   }
 
-  public async play(tracks: DJPlaylistItem[], startIndex: number): Promise<void> {
+  public async play(tracks: DJTrack[], startIndex: number): Promise<void> {
     if (!this.audioElement) return;
     if (!tracks || tracks.length === 0) return;
     if (startIndex < 0 || startIndex >= tracks.length) return;

@@ -3,7 +3,7 @@ import { Pause, Play, SkipBack, SkipForward, Loader2 } from 'lucide-react';
 import { useEffect, useState, useRef } from 'react';
 import { PlayerManager } from './PlayerManager';
 import { PlaybackState } from './MusicPlayerBase';
-import { DJPlaylistItem } from '../interfaces/supabase';
+import { DJTrack } from '../interfaces/supabase';
 import { toClockTime } from '../helpers/time';
 import { User } from '@supabase/supabase-js';
 import { Setting } from '../../../lib/settings';
@@ -16,7 +16,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
   const [isSeeking, setIsSeeking] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [currentTrack, setCurrentTrack] = useState<DJPlaylistItem | null>(null);
+  const [currentTrack, setCurrentTrack] = useState<DJTrack | null>(null);
   const [isBarVisible, setIsBarVisible] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 

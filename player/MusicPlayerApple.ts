@@ -1,4 +1,4 @@
-import { DJPlaylistItem } from '../interfaces/supabase';
+import { DJTrack } from '../interfaces/supabase';
 import { MusicPlayerBase } from './MusicPlayerBase';
 import { MusicKitClient } from '../lib/musickit';
 
@@ -53,7 +53,7 @@ export class MusicPlayerApple extends MusicPlayerBase {
     });
   }
 
-  public async play(tracks: DJPlaylistItem[], startIndex: number): Promise<void> {
+  public async play(tracks: DJTrack[], startIndex: number): Promise<void> {
     if (!tracks || tracks.length === 0) return;
     if (startIndex < 0 || startIndex >= tracks.length) return;
 
