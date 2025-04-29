@@ -71,6 +71,13 @@ export enum SupabaseColumnsTracks {
   TidalLink = 'tidal_link',
 }
 
+export enum SupabaseColumnsLinkPlaylistTracks {
+  Id = 'id',
+  PlaylistId = 'playlist_id',
+  TrackId = 'track_id',
+  Position = 'position',
+}
+
 export enum SupabaseColumnsUsers {
   Id = 'id',
   Name = 'name',
@@ -160,4 +167,11 @@ export interface DJPlaylistUser {
   name: string
   email: string
   createdAt?: Date
+}
+
+export interface LinkPlaylistTracks {
+  id?: string
+  playlist_id: number
+  track_id: string
+  position: number
 }
