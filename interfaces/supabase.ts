@@ -31,14 +31,11 @@ export enum SupabaseColumnsPlaylists {
 
 export enum SupabaseColumnsTracks {
   Id = 'id',
-  PlaylistId = 'playlist_id',
-  ItemId = 'item_id',
   CreatedAt = 'created_at',
   Title = 'title',
   Artist = 'artist',
   Album = 'album',
   ImageUrl = 'imageurl',
-  Position = 'position',
   Duration = 'duration',
   ReleaseDate = 'releasedate', // test
   Bpm = 'bpm',
