@@ -11,6 +11,7 @@ export enum SupabaseTables {
   Playlists = 'playlists',
   Tracks = 'tracks',
   Users = 'users',
+  LinkPlaylistTracks = 'link_playlist_tracks',
 }
 
 export enum SupabaseColumnsPlaylists {
