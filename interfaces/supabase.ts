@@ -79,6 +79,12 @@ export enum SupabaseColumnsLinkPlaylistTracks {
   Position = 'position',
 }
 
+export interface SupabaseLinkPlaylistTracksType {
+  position: number
+  playlist_id: number
+  track: DJTrack
+}
+
 export enum SupabaseColumnsUsers {
   Id = 'id',
   Name = 'name',
@@ -125,8 +131,6 @@ export class DJPlaylist {
 
 export interface DJTrack {
   id?: string // Row ID
-  position?: number // Index in playlist
-  playlist_id?: number // Playlist ID
   created_at?: Date // Row creation date
   
   // Track metadata
@@ -161,6 +165,9 @@ export interface DJTrack {
   tidal_id?: string
   tidal_preview?: string
   tidal_link?: string
+
+  // For UI / temp fields
+  _position?: number
 }
 
 export interface DJPlaylistUser {
