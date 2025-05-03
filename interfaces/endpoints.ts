@@ -60,7 +60,13 @@ export interface PlaylistGenerationResponse {
   items: DJTrack[]
 }
 
-export interface TrackSearchResponse {
+export interface SearchTracksQuery {
+  q?: string
+  artist?: string
+  title?: string
+}
+
+export interface SearchTracksResponse {
   tracks: ISpotifyTrack[];
   success: boolean;
 }
@@ -73,4 +79,22 @@ export interface PlaylistSearchResponse {
 export interface ErrorResponse {
   success: false
   error: string
+}
+
+export interface SuggestTracksRequest {
+  spotifyTrackIds: string[]
+}
+
+export interface SuggestTracksResponse {
+  success: boolean
+  spotifyTracks: ISpotifyTrack[]
+}
+
+export interface TrackRequest {
+  spotifyTrack: ISpotifyTrack
+}
+
+export interface TrackResponse {
+  success: boolean
+  track: DJTrack
 }
