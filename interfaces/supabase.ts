@@ -89,7 +89,28 @@ export enum SupabaseColumnsUsers {
   CreatedAt = 'created_at',
 }
 
-export class DJPlaylist {
+// (AI) Base interface for playlist properties
+export interface BaseDJPlaylist {
+  id?: number
+  title?: string
+  type?: PlaylistType
+  imageurl?: string
+  description?: string
+  tags?: string[]
+  created_by?: string
+  created_at?: Date
+  trending?: boolean
+  published?: boolean
+  live_updating?: boolean
+  ignored_services?: StreamingService[]
+
+  // Virtual fields
+  _selected?: boolean
+  _externalId?: string
+  _items?: DJTrack[]
+}
+
+export class DJPlaylist implements BaseDJPlaylist {
   id?: number
   title?: string
   type?: PlaylistType
@@ -105,11 +126,11 @@ export class DJPlaylist {
 
   // For UI
   _selected?: boolean
-  _externalId?: string // Used to keep AM playlist ID from UI
+  _externalId?: string
   _items?: DJTrack[]
 
   constructor(playlistData: DJPlaylist, itemsData?: DJTrack[]) {
-    Object.assign(this, playlistData);
+    Object.assign(this, playlistData)
 
     // Add items if provided
     if (itemsData) {
@@ -118,11 +139,11 @@ export class DJPlaylist {
   }
 
   get isAppleMusicDisabled() {
-    return this.ignored_services?.includes(StreamingService.AppleMusic)// || this._items?.every(x => !x.applemusic_id);
+    return this.ignored_services?.includes(StreamingService.AppleMusic)
   }
 
   get isBeatportDisabled() {
-    return this.ignored_services?.includes(StreamingService.Beatport)// || this._items?.every(x => !x.beatport_id);
+    return this.ignored_services?.includes(StreamingService.Beatport)
   }
 }
 
