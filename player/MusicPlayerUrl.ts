@@ -94,6 +94,7 @@ export class MusicPlayerUrl extends MusicPlayerBase {
 
   public getCurrentTime(): number {
     if (!this.audioElement) return 0;
+
     return this.audioElement.currentTime;
   }
 

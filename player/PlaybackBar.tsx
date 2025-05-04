@@ -1,14 +1,12 @@
 import { Button } from '@/components/ui/button';
-import { Pause, Play, SkipBack, SkipForward, Loader2 } from 'lucide-react';
-import { useEffect, useState, useRef } from 'react';
-import { PlayerManager } from './PlayerManager';
-import { PlaybackState } from './MusicPlayerBase';
-import { DJTrack } from '../interfaces/supabase';
-import { toClockTime } from '../helpers/time';
 import { User } from '@supabase/supabase-js';
-import { Setting } from '../../../lib/settings';
-import { AudioPlaybackType } from '../../../interface/settings';
+import { Loader2, Pause, Play, SkipBack, SkipForward } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { cn } from '../../../lib/utils';
+import { toClockTime } from '../helpers/time';
+import { DJTrack } from '../interfaces/supabase';
+import { PlaybackState } from './MusicPlayerBase';
+import { PlayerManager } from './PlayerManager';
 
 const PlaybackBar = ({ user }: { user: User | null }) => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -59,25 +57,19 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
   });
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
-
-    const updateTime = () => {
-      if (!isPlaying || isSeeking) return;
+    const interval = setInterval(() => {
+      if (isSeeking) return;
 
       setCurrentTime(PlayerManager.player?.getCurrentTime() || 0);
       setDuration(PlayerManager.player?.getDuration() || 0);
-    };
-
-    if (isPlaying) {
-      interval = setInterval(updateTime, 20);
-    }
+    }, 20);
 
     return () => {
       if (interval) {
         clearInterval(interval);
       }
     };
-  }, [isPlaying, isSeeking]);
+  }, [isSeeking]);
 
 
   useEffect(() => {
