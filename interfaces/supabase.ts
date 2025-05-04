@@ -145,12 +145,29 @@ export class DJPlaylist implements BaseDJPlaylist {
   get isBeatportDisabled() {
     return this.ignored_services?.includes(StreamingService.Beatport)
   }
+
+  get imageUrl(): { small: string, medium: string, large: string } | null {
+    if (!this.imageurl) return null
+
+    const small = [...this.imageurl.split('.')]
+    small[small.length - 2] += '_80'
+
+    const medium = [...this.imageurl.split('.')]
+    medium[medium.length - 2] += '_300'
+
+    return {
+
+      small: small.join('.'),
+      medium: medium.join('.'),
+      large: this.imageurl
+    }
+  }
 }
 
 export interface DJTrack {
   id?: string // Row ID
   created_at?: Date // Row creation date
-  
+
   // Track metadata
   title: string
   artist: string
