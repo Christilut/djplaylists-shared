@@ -159,13 +159,13 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
   if (!currentTrack || !isBarVisible) return null;
 
   return (
-    <div className="fixed z-50 bottom-0 left-0 right-0 border-t border-white/10 pt-2 backdrop-blur bg-stone-800/80">
+    <div className="fixed z-[100] bottom-0 left-0 right-0 border-t border-white/10 pt-2 backdrop-blur bg-stone-800/80">
       <div className="mx-auto max-w-[1104px] px-2 relative">
         <div className="flex items-center justify-between sm:pt-0 pt-12">
           <div className="flex items-center gap-4">
             <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
               <img
-                src={currentTrack.imageurl.replace('{w}', '120').replace('{h}', '120')}
+                src={currentTrack.imageurl}
                 alt={`${currentTrack.title} album art`}
                 className="h-full w-full object-cover"
               />
