@@ -80,8 +80,8 @@ export interface ErrorResponse {
 export interface SuggestTracksRequest {
   spotifyTrackIds?: string[]
   usedSpotifyTrackIds?: string[]
-  // beatportTrackIds?: string[]
-  // usedBeatportTrackIds?: string[]
+  beatportTrackIds?: string[]
+  usedBeatportTrackIds?: string[]
 }
 
 export interface SuggestTracksResponse {
