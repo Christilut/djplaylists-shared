@@ -90,10 +90,10 @@ export interface SuggestTracksResponse {
 }
 
 export interface TrackRequest {
-  track: DJTrack
+  tracks: DJTrack[]
 }
 
 export interface TrackResponse {
   success: boolean
-  track: DJTrack
+  tracks: DJTrack[]
 }
