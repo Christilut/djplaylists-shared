@@ -143,7 +143,7 @@ export class DJPlaylist implements BaseDJPlaylist {
   _externalId?: string
   _items?: DJTrack[]
 
-  constructor(playlistData: DJPlaylist, itemsData?: DJTrack[]) {
+  constructor(playlistData: BaseDJPlaylist, itemsData?: DJTrack[]) {
     Object.assign(this, playlistData)
 
     // Add items if provided
