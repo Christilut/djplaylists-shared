@@ -79,9 +79,9 @@ export interface ErrorResponse {
 
 export interface SuggestTracksRequest {
   spotifyTrackIds?: string[]
-  beatportTrackIds?: string[]
   usedSpotifyTrackIds?: string[]
-  usedBeatportTrackIds?: string[]
+  // beatportTrackIds?: string[]
+  // usedBeatportTrackIds?: string[]
 }
 
 export interface SuggestTracksResponse {
