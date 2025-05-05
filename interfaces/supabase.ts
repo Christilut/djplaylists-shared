@@ -5,6 +5,7 @@ export enum StreamingService {
   Spotify = 'spotify',
   Beatport = 'beatport',
   Tidal = 'tidal',
+  Mixcloud = 'mixcloud',
 }
 
 export enum SupabaseTables {
