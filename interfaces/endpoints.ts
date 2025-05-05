@@ -78,7 +78,10 @@ export interface ErrorResponse {
 }
 
 export interface SuggestTracksRequest {
-  spotifyTrackIds: string[]
+  spotifyTrackIds?: string[]
+  beatportTrackIds?: string[]
+  usedSpotifyTrackIds?: string[]
+  usedBeatportTrackIds?: string[]
 }
 
 export interface SuggestTracksResponse {
