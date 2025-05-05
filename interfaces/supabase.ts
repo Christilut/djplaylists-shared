@@ -8,6 +8,19 @@ export enum StreamingService {
   Mixcloud = 'mixcloud',
 }
 
+export const StreamingServiceLabels = {
+  [StreamingService.AppleMusic]: 'Apple Music',
+  [StreamingService.Spotify]: 'Spotify',
+  [StreamingService.Beatport]: 'Beatport',
+  [StreamingService.Tidal]: 'Tidal',
+  [StreamingService.Mixcloud]: 'Mixcloud',
+}
+
+export const StreamingServiceColors = {
+  [StreamingService.AppleMusic]: 'bg-dj-pink',
+  [StreamingService.Beatport]: 'bg-green-500',
+}
+
 export enum SupabaseTables {
   Playlists = 'playlists',
   Tracks = 'tracks',
