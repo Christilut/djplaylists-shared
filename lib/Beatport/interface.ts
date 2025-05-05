@@ -163,7 +163,7 @@ export interface IBeatportPlaylist {
   keys: unknown[]
   length_ms: number | null
   name: string
-  release_images: unknown[]
+  release_images: string[]
   track_count: number
   type: {
     id: number

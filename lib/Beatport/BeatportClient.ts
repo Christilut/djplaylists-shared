@@ -1,7 +1,8 @@
 import Axios from 'axios'
 import { BeatportAuth } from './BeatportAuth'
-import { BEATPORT_API_URL, IBeatportPlaylist } from './interface'
-import { DJPlaylist } from '../../interfaces/supabase'
+import { BEATPORT_API_URL, IBeatportPlaylist, IBeatportTrack, IBeatportPlaylistPosition, IBeatportResponse } from './interface'
+import { DJPlaylist, DJTrack } from '../../interfaces/supabase'
+import { KeyConverter } from '../../helpers/KeyConverter'
 
 interface IApiCallArgs {
   endpoint: string
@@ -62,6 +63,26 @@ export class BeatportClient {
     }
   }
 
+  // (AI) Get all playlists from Beatport
+  async getPlaylists(): Promise<IBeatportPlaylist[]> {
+    const response = await this.apiCall<IBeatportResponse<IBeatportPlaylist>>({
+      endpoint: '/my/playlists/',
+      method: 'GET'
+    })
+
+    return response.results
+  }
+
+  // (AI) Get tracks from a specific playlist
+  async getPlaylistTracks(playlistId: string): Promise<IBeatportPlaylistPosition[]> {
+    const response = await this.apiCall<IBeatportResponse<IBeatportPlaylistPosition>>({
+      endpoint: `/my/playlists/${playlistId}/tracks/`,
+      method: 'GET'
+    })
+
+    return response.results
+  }
+
   async createPlaylist(djPlaylist: DJPlaylist) {
     const beatportPlaylist = await this.apiCall<IBeatportPlaylist>({
       endpoint: `/my/playlists/`,
@@ -85,5 +106,29 @@ export class BeatportClient {
     })
 
     return beatportPlaylist.id
+  }
+
+  static trackToDJTrack(track: IBeatportTrack): DJTrack {
+    let title = track.name
+
+    if (track.mix_name !== 'Original Mix') {
+      title = `${title} (${track.mix_name})`
+    }
+
+    return {
+      title,
+      artist: track.artists[0].name,
+      album: track.release?.name,
+      imageurl: track.release?.image?.uri,
+      created_at: new Date(),
+      beatport_id: track.id.toString(),
+      beatport_link: `https://www.beatport.com/track/-/${track.id}`,
+      beatport_preview: track.sample_url,
+      bpm: track.bpm,
+      key: KeyConverter.toOpenKey(`${track.key.camelot_number}${track.key.camelot_letter}`),
+      isrc: track.isrc,
+      duration: track.length_ms / 1000,
+      releasedate: new Date(track.publish_date)
+    }
   }
 }

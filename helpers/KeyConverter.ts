@@ -68,6 +68,23 @@ export class KeyConverter {
     return 0
   }
 
+  static numberToOpenKey(n: number): string {
+    if (n < 1 || n > 24) return ''
+
+    if (n % 2 === 0) return `${n / 2}M`
+    else return `${(n + 1) / 2}D`
+  }
+
+  static toOpenKey(key: string, leadingZero: boolean = false): string {
+    let openKey: string = KeyConverter.numberToOpenKey(KeyConverter.toKeyNumber(key))
+
+    if (leadingZero && openKey.length === 2) openKey = `0${openKey}`
+
+    if (!openKey) return key
+
+    return openKey
+  }
+
   static getKeyNumberColor(n: number): string {
     if (n === 0) return ''
 
