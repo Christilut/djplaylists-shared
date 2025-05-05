@@ -38,6 +38,11 @@ export abstract class MusicKitClient {
     }
   }
 
+  static reset() {
+    MusicKitClient.musicKit = null;
+    MusicKitClient.isInitialized = false;
+  }
+
   static signout() {
     if (MusicKitClient.musicKit) {
       MusicKitClient.musicKit.unauthorize();
@@ -96,9 +101,8 @@ export abstract class MusicKitClient {
       return tracks
     } catch (error) {
       console.error(`Failed to fetch tracks for playlist ${playlistId}:`, error);
-// TEMP:
-// TODO: this requires a musickit cache clear
-      throw new Error(`Failed to import playlists. You might need to share it first, so Apple gives it a public link.`)
+
+      throw error
     }
   }
 
