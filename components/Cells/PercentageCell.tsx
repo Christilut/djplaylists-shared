@@ -14,7 +14,7 @@ const PercentageCell = ({ value, className }: { value: number | undefined, class
 
   return (
     <div className={cn("text-center", className)}>
-      <div className={cn("inline-block px-3 py-1 rounded-full", bg, text)}>
+      <div className={cn("inline-block px-2 py-[2px] rounded-md text-[15px]", bg, text)}>
         {percentage}%
       </div>
     </div>
