@@ -87,7 +87,7 @@ export interface SuggestTracksResponse {
 }
 
 export interface TrackRequest {
-  spotifyTrack: ISpotifyTrack
+  track: DJTrack
 }
 
 export interface TrackResponse {
