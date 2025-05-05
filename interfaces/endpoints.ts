@@ -1,6 +1,6 @@
 import { PlaylistType } from './playlist';
 import { ISpotifyTrack, ISpotifyPlaylist } from './spotify';
-import { DJPlaylist, DJTrack } from './supabase';
+import { DJPlaylist, DJTrack, StreamingService } from './supabase';
 
 export enum MoodOptions {
   Low = 'low',
@@ -27,11 +27,6 @@ export enum ExtraPlaylistsSelectionMethod {
   HighestHappiness = 'happiness_highest',
   NewestReleaseYear = 'release_newest',
   OldestReleaseYear = 'release_oldest'
-}
-
-export enum StreamingService {
-  AppleMusic = 'applemusic',
-  Spotify = 'spotify'
 }
 
 export interface PlaylistGenerationParams {
@@ -64,10 +59,11 @@ export interface SearchTracksQuery {
   q?: string
   artist?: string
   title?: string
+  provider?: StreamingService
 }
 
 export interface SearchTracksResponse {
-  tracks: ISpotifyTrack[];
+  tracks: DJTrack[];
   success: boolean;
 }
 
@@ -87,7 +83,7 @@ export interface SuggestTracksRequest {
 
 export interface SuggestTracksResponse {
   success: boolean
-  spotifyTracks: ISpotifyTrack[]
+  tracks: DJTrack[]
 }
 
 export interface TrackRequest {
