@@ -19,7 +19,10 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.log(error)
     if (error.response?.status === 429) {
+
+      console.log('toast')
       // (AI) Show a toast notification for rate limiting
       toast.error('Too many requests. Please try again later.');
     }

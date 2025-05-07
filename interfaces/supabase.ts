@@ -170,7 +170,6 @@ export class DJPlaylist implements BaseDJPlaylist {
     medium[medium.length - 2] += '_300'
 
     return {
-
       small: small.join('.'),
       medium: medium.join('.'),
       large: this.imageurl
