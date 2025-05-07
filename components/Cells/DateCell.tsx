@@ -11,12 +11,12 @@ const DateCell: React.FC<DateCellProps> = ({ track, isFirstRow = false }) => {
   if (!track.releasedate) return <div className="text-center"></div>;
 
   const year = new Date(track.releasedate).getFullYear();
-  const fullDate = new Date(track.releasedate).toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-  const tooltipText = `<b>${track.album}</b> was released on ${fullDate}`
+  // const fullDate = new Date(track.releasedate).toLocaleDateString(undefined, {
+  //   year: 'numeric',
+  //   month: 'long',
+  //   day: 'numeric'
+  // });
+  const tooltipText = `<b>${track.album}</b> was released in ${year}`
 
   if (track.releasedate) {
     return (
