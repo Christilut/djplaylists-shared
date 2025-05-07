@@ -182,12 +182,12 @@ export interface DJTrack {
   created_at?: Date // Row creation date
 
   // Track metadata
-  title: string
-  artist: string
-  album: string
-  imageurl: string
+  title?: string
+  artist?: string
+  album?: string
+  imageurl?: string
   duration?: number
-  releasedate: Date
+  releasedate?: Date
   bpm?: number
   key?: string
   energy?: number
