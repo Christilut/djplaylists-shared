@@ -97,3 +97,14 @@ export interface TrackResponse {
   success: boolean
   tracks: DJTrack[]
 }
+
+export interface PlaylistParams {
+  id: string
+}
+
+export interface UpdatePlaylistRequest {
+  title?: string
+  description?: string
+  tags?: string[]
+  type?: PlaylistType
+}
