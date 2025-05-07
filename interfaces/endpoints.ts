@@ -98,10 +98,6 @@ export interface TrackResponse {
   tracks: DJTrack[]
 }
 
-export interface PlaylistParams {
-  id: string
-}
-
 export interface UpdatePlaylistRequest {
   title?: string
   description?: string
