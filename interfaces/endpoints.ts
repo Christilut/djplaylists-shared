@@ -105,3 +105,22 @@ export interface UpdatePlaylistRequest {
   type?: PlaylistType
   published?: boolean
 }
+
+export interface DJProfileData {
+  userId: string
+  username: string
+  displayName: string
+  bioLong: string
+  bioShort: string
+  countryCode: string
+  city: string
+  djSinceYear: number
+  avatarUrl: string
+  genreTags: string[]
+  socialLinks: {
+    instagram?: string
+    tiktok?: string
+    soundcloud?: string
+    youtube?: string
+  }
+}
