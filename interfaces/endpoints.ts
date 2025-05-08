@@ -1,3 +1,4 @@
+import { DJProfileData } from '../../../../../djplaylists-shared/interfaces/endpoints';
 import { PlaylistType } from './playlist';
 import { ISpotifyTrack, ISpotifyPlaylist } from './spotify';
 import { DJPlaylist, DJTrack, StreamingService } from './supabase';
@@ -104,29 +105,6 @@ export interface UpdatePlaylistRequest {
   tags?: string[]
   type?: PlaylistType
   published?: boolean
-}
-
-export interface DJProfileData {
-  userId: string
-  username: string
-  djName: string
-  displayName: string
-  joinedDate: Date
-  bioLong: string
-  bioShort: string
-  countryCode: string
-  place: string
-  djSinceYear: number
-  avatarUrl: string
-  genreTags: string[]
-  djStyle: string[]
-  socialLinks: {
-    website?: string
-    instagram?: string
-    tiktok?: string
-    soundcloud?: string
-    youtube?: string
-  }
 }
 
 export interface GetUserProfileResponse {

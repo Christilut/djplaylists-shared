@@ -249,3 +249,26 @@ export interface LinkPlaylistTracks {
   track_id: string
   position: number
 }
+
+export interface DJProfileData {
+  user_id: string
+  username: string
+  dj_name: string
+  display_name: string
+  joined_date: Date
+  bio_long: string
+  bio_short: string
+  country_code: string
+  place: string
+  dj_since_year: number
+  avatar_url: string
+  genre_tags: string[]
+  dj_style: string[]
+  social_links: {
+    website?: string
+    instagram?: string
+    tiktok?: string
+    soundcloud?: string
+    youtube?: string
+  }
+}
