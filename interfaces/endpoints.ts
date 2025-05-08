@@ -109,6 +109,7 @@ export interface UpdatePlaylistRequest {
 export interface DJProfileData {
   userId: string
   username: string
+  djName: string
   displayName: string
   joinedDate: Date
   bioLong: string
