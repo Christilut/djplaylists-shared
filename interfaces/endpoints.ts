@@ -134,3 +134,9 @@ export interface GetUserProfileResponse {
   message?: string
   data?: DJProfileData
 }
+
+export interface PostUserProfileResponse {
+  success: boolean
+  message?: string
+  data?: DJProfileData
+}
