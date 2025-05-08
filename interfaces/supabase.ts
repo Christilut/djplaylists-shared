@@ -26,6 +26,7 @@ export enum SupabaseTables {
   Tracks = 'tracks',
   Users = 'users',
   LinkPlaylistTracks = 'link_playlist_tracks',
+  UserProfile = 'user_profile',
 }
 
 export enum SupabaseColumnsPlaylists {
@@ -101,6 +102,23 @@ export enum SupabaseColumnsUsers {
   Name = 'name',
   Email = 'email',
   CreatedAt = 'created_at',
+}
+
+export enum SupabaseColumnsUserProfile {
+  CreatedAt = 'created_at',
+  UserId = 'user_id',
+  Username = 'username',
+  DisplayName = 'display_name',
+  JoinedAt = 'joined_at',
+  BioLong = 'bio_long',
+  BioShort = 'bio_short',
+  CountryCode = 'country_code',
+  Place = 'place',
+  DjSinceYear = 'dj_since_year',
+  AvatarUrl = 'avatar_url',
+  GenreTags = 'genre_tags',
+  DjStyle = 'dj_style',
+  SocialLinks = 'social_links',
 }
 
 // (AI) Base interface for playlist properties
