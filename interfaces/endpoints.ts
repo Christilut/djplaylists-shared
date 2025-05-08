@@ -1,7 +1,6 @@
-import { DJProfileData } from '../../../../../djplaylists-shared/interfaces/endpoints';
 import { PlaylistType } from './playlist';
-import { ISpotifyTrack, ISpotifyPlaylist } from './spotify';
-import { DJPlaylist, DJTrack, StreamingService } from './supabase';
+import { ISpotifyPlaylist } from './spotify';
+import { DJPlaylist, DJTrack, StreamingService, DJProfileData } from './supabase';
 
 export enum MoodOptions {
   Low = 'low',

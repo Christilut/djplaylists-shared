@@ -108,6 +108,7 @@ export enum SupabaseColumnsUserProfile {
   CreatedAt = 'created_at',
   UserId = 'user_id',
   Username = 'username',
+  DjName = 'dj_name',
   DisplayName = 'display_name',
   JoinedAt = 'joined_at',
   BioLong = 'bio_long',
