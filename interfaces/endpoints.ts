@@ -110,6 +110,7 @@ export interface DJProfileData {
   userId: string
   username: string
   displayName: string
+  joinedDate: Date
   bioLong: string
   bioShort: string
   countryCode: string
@@ -118,9 +119,16 @@ export interface DJProfileData {
   avatarUrl: string
   genreTags: string[]
   socialLinks: {
+    website?: string
     instagram?: string
     tiktok?: string
     soundcloud?: string
     youtube?: string
   }
+}
+
+export interface GetUserProfileResponse {
+  success: boolean
+  message?: string
+  data?: DJProfileData
 }
