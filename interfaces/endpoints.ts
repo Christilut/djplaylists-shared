@@ -114,10 +114,11 @@ export interface DJProfileData {
   bioLong: string
   bioShort: string
   countryCode: string
-  city: string
+  place: string
   djSinceYear: number
   avatarUrl: string
   genreTags: string[]
+  djStyle: string[]
   socialLinks: {
     website?: string
     instagram?: string
