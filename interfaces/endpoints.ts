@@ -103,4 +103,5 @@ export interface UpdatePlaylistRequest {
   description?: string
   tags?: string[]
   type?: PlaylistType
+  published?: boolean
 }
