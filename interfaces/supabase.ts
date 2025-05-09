@@ -157,10 +157,11 @@ export class DJPlaylist implements BaseDJPlaylist {
   live_updating?: boolean
   ignored_services?: StreamingService[]
 
-  // For UI
+  // Virtual fields
   _selected?: boolean
   _externalId?: string
   _items?: DJTrack[]
+  _username?: string
 
   constructor(playlistData: BaseDJPlaylist, itemsData?: DJTrack[]) {
     Object.assign(this, playlistData)
