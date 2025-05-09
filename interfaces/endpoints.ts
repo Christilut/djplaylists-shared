@@ -118,6 +118,12 @@ export interface PostUserProfileResponse {
   data?: DJProfileData
 }
 
+export interface PutUserProfileResponse {
+  success: boolean
+  data?: DJProfileData
+  message?: string
+}
+
 export interface GetMeResponse {
   success: boolean
   data?: {
