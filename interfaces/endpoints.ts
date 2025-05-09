@@ -117,3 +117,11 @@ export interface PostUserProfileResponse {
   message?: string
   data?: DJProfileData
 }
+
+export interface GetMeResponse {
+  success: boolean
+  data?: {
+    username?: string | null
+  }
+  message?: string
+}
