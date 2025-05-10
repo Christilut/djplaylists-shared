@@ -257,7 +257,7 @@ export interface DJProfileData {
   username: string
   dj_name: string
   display_name: string
-  joined_date: Date
+  joined_at: Date
   bio_long: string
   bio_short: string
   country_code: string
