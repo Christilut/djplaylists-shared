@@ -27,6 +27,7 @@ export enum SupabaseTables {
   Users = 'users',
   LinkPlaylistTracks = 'link_playlist_tracks',
   UserProfile = 'user_profile',
+  PlaylistSaves = 'playlist_saves',
 }
 
 export enum SupabaseColumnsPlaylists {
@@ -90,6 +91,14 @@ export enum SupabaseColumnsLinkPlaylistTracks {
   PlaylistId = 'playlist_id',
   TrackId = 'track_id',
   Position = 'position',
+}
+
+export enum SupabaseColumnsPlaylistSaves {
+  Id = 'id',
+  PlaylistId = 'playlist_id',
+  UserId = 'user_id',
+  SavedAt = 'saved_at',
+  StreamingService = 'streaming_service',
 }
 
 export interface SupabaseLinkPlaylistTracksType {
@@ -276,4 +285,12 @@ export interface DJProfileData {
     soundcloud?: string
     youtube?: string
   }
+}
+
+export interface PlaylistSave {
+  id: string
+  playlist_id: number
+  user_id: string
+  saved_at: Date
+  streaming_service: StreamingService
 }
