@@ -42,6 +42,7 @@ export enum SupabaseColumnsPlaylists {
   Published = 'published',
   LiveUpdating = 'live_updating',
   IgnoredServices = 'ignored_services',
+  GenrePrimary = 'genre_primary',
 }
 
 export enum SupabaseColumnsTracks {
@@ -136,6 +137,7 @@ export interface BaseDJPlaylist {
   published?: boolean
   live_updating?: boolean
   ignored_services?: StreamingService[]
+  genre_primary?: string
 
   // Virtual fields
   _selected?: boolean
