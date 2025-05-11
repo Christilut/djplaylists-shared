@@ -7,6 +7,7 @@ export const GENRE_PRIMARY_OPTIONS = [
   'Classical',
   'Country',
   // 'Deep House',
+  'Dance',
   'Disco',
   'Drum & Bass',
   'Dubstep',
