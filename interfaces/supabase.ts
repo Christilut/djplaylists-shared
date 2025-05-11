@@ -158,6 +158,7 @@ export class DJPlaylist implements BaseDJPlaylist {
   published?: boolean
   live_updating?: boolean
   ignored_services?: StreamingService[]
+  genre_primary?: string
 
   // Virtual fields
   _selected?: boolean
