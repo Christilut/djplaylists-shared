@@ -128,6 +128,7 @@ export interface GetMeResponse {
   success: boolean
   data?: {
     username?: string | null
+    roles: string[]
   }
   message?: string
 }
