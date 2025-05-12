@@ -28,6 +28,7 @@ export enum SupabaseTables {
   LinkPlaylistTracks = 'link_playlist_tracks',
   UserProfile = 'user_profile',
   PlaylistSaves = 'playlist_saves',
+  UserSettings = 'user_settings',
 }
 
 export enum SupabaseColumnsPlaylists {
@@ -101,10 +102,10 @@ export enum SupabaseColumnsPlaylistSaves {
   StreamingService = 'streaming_service',
 }
 
-export interface SupabaseLinkPlaylistTracksType {
-  position: number
-  playlist_id: number
-  track: DJTrack
+export enum SupabaseColumnsUserSettings {
+  Id = 'id',
+  UserId = 'user_id',
+  MailingDigest = 'mailing_digest',
 }
 
 export enum SupabaseColumnsUsers {
@@ -264,6 +265,12 @@ export interface LinkPlaylistTracks {
   position: number
 }
 
+export interface SupabaseLinkPlaylistTracksType {
+  position: number
+  playlist_id: number
+  track: DJTrack
+}
+
 export interface DJProfileData {
   user_id: string
   username: string
@@ -294,3 +301,11 @@ export interface PlaylistSave {
   saved_at: Date
   streaming_service: StreamingService
 }
+
+export interface UserSettings {
+  id: string
+  user_id: string
+  mailing_digest: boolean
+}
+
+
