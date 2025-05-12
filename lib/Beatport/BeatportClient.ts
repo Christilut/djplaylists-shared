@@ -3,6 +3,7 @@ import { BeatportAuth } from './BeatportAuth'
 import { BEATPORT_API_URL, IBeatportPlaylist, IBeatportTrack, IBeatportPlaylistPosition, IBeatportResponse } from './interface'
 import { DJPlaylist, DJTrack } from '../../interfaces/supabase'
 import { KeyConverter } from '../../helpers/KeyConverter'
+import _ from 'lodash'
 
 interface IApiCallArgs {
   endpoint: string
@@ -67,20 +68,44 @@ export class BeatportClient {
   async getPlaylists(): Promise<IBeatportPlaylist[]> {
     const response = await this.apiCall<IBeatportResponse<IBeatportPlaylist>>({
       endpoint: '/my/playlists/',
-      method: 'GET'
+      method: 'GET',
+      query: {
+        per_page: 100
+      }
     })
 
     return response.results
   }
 
-  // (AI) Get tracks from a specific playlist
+  // (AI) Get tracks from a specific playlist, fetching all pages
   async getPlaylistTracks(playlistId: string): Promise<IBeatportPlaylistPosition[]> {
-    const response = await this.apiCall<IBeatportResponse<IBeatportPlaylistPosition>>({
-      endpoint: `/my/playlists/${playlistId}/tracks/`,
-      method: 'GET'
-    })
+    // (AI) This function fetches all tracks from a Beatport playlist, handling paging by following the 'next' field in the API response
+    let allResults: IBeatportPlaylistPosition[] = []
+    let page = 1
 
-    return response.results
+    while (page < 100) {
+      // If nextUrl is a full URL, use it as endpoint, otherwise use the relative path
+      const response = await this.apiCall<IBeatportResponse<IBeatportPlaylistPosition>>({
+        endpoint: `/my/playlists/${playlistId}/tracks/`,
+        method: 'GET',
+        query: {
+          per_page: 100,
+          page
+        },
+      })
+
+      if (response.results) {
+        allResults = _.concat(allResults, response.results)
+      }
+
+      if (!response.next) {
+        break
+      }
+
+      page += 1
+    }
+
+    return allResults
   }
 
   async createPlaylist(djPlaylist: DJPlaylist) {
