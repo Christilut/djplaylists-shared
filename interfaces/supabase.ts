@@ -30,6 +30,8 @@ export enum SupabaseTables {
   PlaylistSaves = 'playlist_saves',
   UserSettings = 'user_settings',
   EmailLog = 'email_log',
+  UserSubscriptions = 'user_subscriptions',
+  Notifications = 'notifications',
 }
 
 export enum SupabaseColumnsPlaylists {
@@ -325,6 +327,49 @@ export interface UserSettings {
   id: string
   user_id: string
   mailing_digest: boolean
+}
+
+export enum SupabaseColumnsUserSubscriptions {
+  Id = 'id',
+  SubscriberId = 'subscriber_id',
+  SubscribedToId = 'subscribed_to_id',
+  CreatedAt = 'created_at',
+}
+
+export enum SupabaseColumnsNotifications {
+  Id = 'id',
+  UserId = 'user_id',
+  Type = 'type',
+  Content = 'content',
+  IsRead = 'is_read',
+  CreatedAt = 'created_at',
+  RelatedUserId = 'related_user_id',
+  RelatedPlaylistId = 'related_playlist_id',
+}
+
+export interface UserSubscription {
+  id: string
+  subscriber_id: string
+  subscribed_to_id: string
+  created_at: Date
+}
+
+export enum NotificationType {
+  PlaylistPublished = 'playlist_published',
+}
+
+export interface Notification {
+  id: string
+  created_at: Date
+  user_id: string
+  type: NotificationType
+  content: {
+    title: string
+    body: string
+  }
+  is_read: boolean
+  related_user_id: string
+  related_playlist_id: number
 }
 
 
