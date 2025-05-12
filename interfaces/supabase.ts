@@ -29,6 +29,7 @@ export enum SupabaseTables {
   UserProfile = 'user_profile',
   PlaylistSaves = 'playlist_saves',
   UserSettings = 'user_settings',
+  EmailLog = 'email_log',
 }
 
 export enum SupabaseColumnsPlaylists {
@@ -131,6 +132,24 @@ export enum SupabaseColumnsUserProfile {
   GenreTags = 'genre_tags',
   DjStyle = 'dj_style',
   SocialLinks = 'social_links',
+}
+
+export enum SupabaseColumnsEmailLog {
+  Id = 'id',
+  UserId = 'user_id',
+  ToEmail = 'to_email',
+  Subject = 'subject',
+  Template = 'template',
+  SentAt = 'sent_at',
+}
+
+export interface EmailLogRow {
+  id: string
+  user_id: string | null
+  to_email: string
+  subject: string
+  template: string
+  sent_at: string // ISO timestamp
 }
 
 // (AI) Base interface for playlist properties
