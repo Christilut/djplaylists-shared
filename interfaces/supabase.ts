@@ -108,8 +108,8 @@ export enum SupabaseColumnsPlaylistSaves {
 export enum SupabaseColumnsUserSettings {
   Id = 'id',
   UserId = 'user_id',
-  MailingDigest = 'mailing_digest',
-  MailingSubscriptions = 'mailing_subscriptions',
+  DigestEmails = 'digest_emails',
+  DjSubscribeEmails = 'dj_subscribe_emails',
 }
 
 export enum SupabaseColumnsUsers {
@@ -175,6 +175,7 @@ export interface BaseDJPlaylist {
   _selected?: boolean
   _externalId?: string
   _items?: DJTrack[]
+  _username?: string
 }
 
 export class DJPlaylist implements BaseDJPlaylist {
