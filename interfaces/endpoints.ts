@@ -128,7 +128,7 @@ export interface GetMeResponse {
   success: boolean
   data?: {
     username?: string | null
-    djName?: string | null
+    dj_name?: string | null
     roles: string[]
     settings: UserSettings
   }
