@@ -1,6 +1,6 @@
 import { PlaylistType } from './playlist';
 import { ISpotifyPlaylist } from './spotify';
-import { DJPlaylist, DJTrack, StreamingService, DJProfileData } from './supabase';
+import { DJPlaylist, DJTrack, StreamingService, DJProfileData, UserSettings } from './supabase';
 
 export enum MoodOptions {
   Low = 'low',
@@ -130,6 +130,7 @@ export interface GetMeResponse {
     username?: string | null
     djName?: string | null
     roles: string[]
+    settings: UserSettings
   }
   message?: string
 }
