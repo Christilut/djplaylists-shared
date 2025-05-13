@@ -109,6 +109,7 @@ export enum SupabaseColumnsUserSettings {
   Id = 'id',
   UserId = 'user_id',
   MailingDigest = 'mailing_digest',
+  MailingSubscriptions = 'mailing_subscriptions',
 }
 
 export enum SupabaseColumnsUsers {
@@ -327,6 +328,7 @@ export interface UserSettings {
   id: string
   user_id: string
   mailing_digest: boolean
+  mailing_subscriptions: boolean
 }
 
 export enum SupabaseColumnsUserSubscriptions {
