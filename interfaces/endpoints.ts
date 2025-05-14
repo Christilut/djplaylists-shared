@@ -124,14 +124,16 @@ export interface PutUserProfileResponse {
   message?: string
 }
 
+export interface UserData {
+  username?: string | null
+  dj_name?: string | null
+  roles: string[]
+  settings: UserSettings
+  subscribed_to: string[]
+}
+
 export interface GetMeResponse {
   success: boolean
-  data?: {
-    username?: string | null
-    dj_name?: string | null
-    roles: string[]
-    settings: UserSettings
-    subscribed_to: string[]
-  }
+  data?: UserData
   message?: string
 }
