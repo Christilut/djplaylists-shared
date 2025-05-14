@@ -131,6 +131,7 @@ export interface GetMeResponse {
     dj_name?: string | null
     roles: string[]
     settings: UserSettings
+    subscribed_to: string[]
   }
   message?: string
 }
