@@ -108,8 +108,8 @@ export enum SupabaseColumnsPlaylistSaves {
 export enum SupabaseColumnsUserSettings {
   Id = 'id',
   UserId = 'user_id',
-  DigestEmails = 'digest_emails',
-  DjSubscribeEmails = 'dj_subscribe_emails',
+  MailingDigest = 'mailing_digest',
+  MailingSubscriptions = 'mailing_subscriptions',
 }
 
 export enum SupabaseColumnsUsers {
