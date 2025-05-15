@@ -1,3 +1,4 @@
+import { getResizedImageUrl } from '../helpers/image'
 import { PlaylistType } from './playlist'
 
 export enum StreamingService {
@@ -219,15 +220,9 @@ export class DJPlaylist implements BaseDJPlaylist {
   get imageUrl(): { small: string, medium: string, large: string } | null {
     if (!this.imageurl) return null
 
-    const small = [...this.imageurl.split('.')]
-    small[small.length - 2] += '_80'
-
-    const medium = [...this.imageurl.split('.')]
-    medium[medium.length - 2] += '_300'
-
     return {
-      small: small.join('.'),
-      medium: medium.join('.'),
+      small: getResizedImageUrl(this.imageurl, 80),
+      medium: getResizedImageUrl(this.imageurl, 300),
       large: this.imageurl
     }
   }
