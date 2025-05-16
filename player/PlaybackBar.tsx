@@ -77,7 +77,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current);
     }
-    
+
     timeoutRef.current = setTimeout(() => {
       // Initial setup
       if (PlayerManager.player) {
@@ -107,7 +107,7 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
         });
       }
     }, 500);
-    
+
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -151,80 +151,84 @@ const PlaybackBar = ({ user }: { user: User | null }) => {
   if (!currentTrack || !isBarVisible) return null;
 
   return (
-    <div className="fixed z-[100] bottom-0 left-0 right-0 border-t border-white/10 pt-2 backdrop-blur bg-stone-800/80">
-      <div className="mx-auto max-w-[1104px] px-2 relative">
-        <div className="flex items-center justify-between sm:pt-0 pt-12">
-          <div className="flex items-center gap-4">
-            <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-md">
-              <img
-                src={currentTrack.imageurl}
-                alt={`${currentTrack.title} album art`}
-                className="h-full w-full object-cover"
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-medium">{currentTrack.title}</span>
-              <span className="text-sm text-white/50">{currentTrack.artist}</span>
-            </div>
-          </div>
-
-          <div className="text-sm text-white">
-            {toClockTime(currentTime)} / {toClockTime(duration)}
-          </div>
+    <div className="fixed z-[100] bottom-0 left-0 right-0 border-t border-white/10 py-2 backdrop-blur bg-stone-800/80">
+      <div className='flex items-center gap-2'>
+        <div className="relative h-[70px] w-[70px] ml-2 flex-shrink-0 overflow-hidden rounded-md hidden sm:block">
+          <img
+            src={currentTrack.imageurl}
+            alt={`${currentTrack.title} album art`}
+            className="h-full w-full object-cover"
+          />
         </div>
 
-        <div className="absolute left-1/2 top-[25px] -translate-x-1/2 -translate-y-1/2 flex items-center gap-2">
-          <Button
-            variant="icon"
-            size="icon"
-            onClick={handlePrevious}
-            className="h-10 w-10"
-            disabled={isLoading}
-          >
-            <SkipBack className="h-5 w-5" />
-          </Button>
-          <Button
-            variant="icon"
-            size="icon"
-            onClick={handlePlayPause}
-            className="h-10 w-10"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <Loader2 className="h-5 w-5 animate-spin text-white" />
-            ) : isPlaying ? (
-              <Pause className="h-5 w-5" />
-            ) : (
-              <Play className="h-5 w-5" />
-            )}
-          </Button>
-          <Button
-            variant="icon"
-            size="icon"
-            onClick={handleNext}
-            className="h-10 w-10"
-            disabled={isLoading}
-          >
-            <SkipForward className="h-5 w-5" />
-          </Button>
-        </div>
-
-        <div className={cn(
-          "mt-2 pb-2 pt-1",
-          (currentTime <= 0 || currentTime > duration || isLoading) && "invisible"
-        )}
-        >
-          <div
-            className="h-1 w-full cursor-pointer rounded-full bg-muted"
-            onClick={handleSeek}
+        <div className="grow max-w-[1104px] px-1 relative">
+          <div className={cn(
+            "pb-2 pt-1",
+            (currentTime <= 0 || currentTime > duration || isLoading) && "invisible"
+          )}
           >
             <div
-              className="h-full rounded-full bg-primary"
-              style={{ width: `${(currentTime / duration) * 100}%` }}
-            />
+              className="h-2 w-full cursor-pointer rounded-full bg-muted"
+              onClick={handleSeek}
+            >
+              <div
+                className="h-full rounded-full bg-primary"
+                style={{ width: `${(currentTime / duration) * 100}%` }}
+              />
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between sm:pt-0 pt-12 mb-2">
+            <div className="flex items-center gap-4">
+              <div className="flex flex-col">
+                <span className="font-medium">{currentTrack.title}</span>
+                <span className="text-sm text-white/50">{currentTrack.artist}</span>
+              </div>
+            </div>
+
+            <div className="text-sm text-white">
+              {toClockTime(currentTime)} / {toClockTime(duration)}
+            </div>
+          </div>
+
+          <div className="absolute left-1/2 top-[45px] -translate-x-1/2 -translate-y-1/2 flex items-center gap-2">
+            <Button
+              variant="icon"
+              size="icon"
+              onClick={handlePrevious}
+              className="h-10 w-10"
+              disabled={isLoading}
+            >
+              <SkipBack className="h-5 w-5" />
+            </Button>
+            <Button
+              variant="icon"
+              size="icon"
+              onClick={handlePlayPause}
+              className="h-10 w-10"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <Loader2 className="h-5 w-5 animate-spin text-white" />
+              ) : isPlaying ? (
+                <Pause className="h-5 w-5" />
+              ) : (
+                <Play className="h-5 w-5" />
+              )}
+            </Button>
+            <Button
+              variant="icon"
+              size="icon"
+              onClick={handleNext}
+              className="h-10 w-10"
+              disabled={isLoading}
+            >
+              <SkipForward className="h-5 w-5" />
+            </Button>
           </div>
         </div>
       </div>
+
     </div >
   );
 };
