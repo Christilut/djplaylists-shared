@@ -48,5 +48,7 @@ export function resizeImage(file: File, maxWidth: number, maxHeight: number): Pr
 }; 
 
 export function getResizedImageUrl(url: string, size: number): string {
+  if (!url) return ''
+  
   return url.replace(/\.([^/.]+)$/, `_${size}.$1`);
 }
