@@ -140,12 +140,6 @@ export interface GetMeResponse {
 
 export interface GetAllUserProfilesResponse {
   success: boolean
-  profiles?: Pick<DJProfileData,
-    SupabaseColumnsUserProfile.UserId |
-    SupabaseColumnsUserProfile.DisplayName |
-    SupabaseColumnsUserProfile.DjName |
-    SupabaseColumnsUserProfile.Username |
-    SupabaseColumnsUserProfile.JoinedAt
-  >[]
+  profiles?: Partial<DJProfileData>[]
   message?: string
 }
