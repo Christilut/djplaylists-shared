@@ -1,6 +1,6 @@
 import { PlaylistType } from './playlist';
 import { ISpotifyPlaylist } from './spotify';
-import { DJPlaylist, DJTrack, StreamingService, DJProfileData, UserSettings } from './supabase';
+import { DJPlaylist, DJTrack, StreamingService, DJProfileData, UserSettings, SupabaseColumnsUserProfile } from './supabase';
 
 export enum MoodOptions {
   Low = 'low',
@@ -48,7 +48,7 @@ export interface PlaylistGenerationParams {
   yearRange: [number, number];
   includeSearchTracks: boolean;
   streamingServices: StreamingService[];
-} 
+}
 
 export interface PlaylistGenerationResponse {
   playlist: DJPlaylist
@@ -135,5 +135,17 @@ export interface UserData {
 export interface GetMeResponse {
   success: boolean
   data?: UserData
+  message?: string
+}
+
+export interface GetAllUserProfilesResponse {
+  success: boolean
+  profiles?: Pick<DJProfileData,
+    SupabaseColumnsUserProfile.UserId |
+    SupabaseColumnsUserProfile.DisplayName |
+    SupabaseColumnsUserProfile.DjName |
+    SupabaseColumnsUserProfile.Username |
+    SupabaseColumnsUserProfile.JoinedAt
+  >[]
   message?: string
 }
