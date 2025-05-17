@@ -1,6 +1,6 @@
 import { PlaylistType } from './playlist';
 import { ISpotifyPlaylist } from './spotify';
-import { DJPlaylist, DJTrack, StreamingService, DJProfileData, UserSettings, SupabaseColumnsUserProfile } from './supabase';
+import { DJPlaylist, DJTrack, StreamingService, DJProfileData, UserSettings, SupabaseColumnsUserProfile, EmailLogRow } from './supabase';
 
 export enum MoodOptions {
   Low = 'low',
@@ -142,4 +142,10 @@ export interface GetAllUserProfilesResponse {
   success: boolean
   profiles?: Partial<DJProfileData>[]
   message?: string
+}
+
+export interface EmailLogResponse {
+  success: boolean
+  message?: string
+  emails?: Partial<EmailLogRow>[]
 }
