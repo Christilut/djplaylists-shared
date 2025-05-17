@@ -126,7 +126,6 @@ export enum SupabaseColumnsUserProfile {
   Username = 'username',
   DjName = 'dj_name',
   DisplayName = 'display_name',
-  JoinedAt = 'joined_at',
   BioLong = 'bio_long',
   BioShort = 'bio_short',
   CountryCode = 'country_code',
@@ -291,10 +290,10 @@ export interface SupabaseLinkPlaylistTracksType {
 
 export interface DJProfileData {
   user_id: string
+  created_at: Date
   username: string
   dj_name: string
   display_name: string
-  joined_at: Date
   bio_long: string
   bio_short: string
   country_code: string
