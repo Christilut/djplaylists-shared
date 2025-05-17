@@ -21,6 +21,9 @@ export async function waitForMinimumDelay(startTime: Date, minimumDelayMs: numbe
 }
 
 export function formatRelativeTime(date: Date): string {
+  if (!date) return ''
+  if (typeof date === 'string') date = new Date(date)
+
   const now = new Date();
   const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
