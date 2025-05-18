@@ -60,8 +60,10 @@ export enum SupabaseColumnsTracks {
   ImageUrl = 'imageurl',
   Duration = 'duration',
   ReleaseDate = 'releasedate', // test
-  Bpm = 'bpm',
-  Key = 'key',
+  SpotifyBpm = 'spotify_bpm',
+  SpotifyKey = 'spotify_key',
+  BeatportBpm = 'beatport_bpm',
+  BeatportKey = 'beatport_key',
   Isrc = 'isrc',
   Energy = 'energy',
   Danceability = 'danceability',
@@ -238,8 +240,10 @@ export interface DJTrack {
   imageurl?: string
   duration?: number
   releasedate?: Date
-  bpm?: number
-  key?: string
+  spotify_bpm?: number
+  spotify_key?: string
+  beatport_bpm?: number
+  beatport_key?: string
   energy?: number
   danceability?: number
   happiness?: number

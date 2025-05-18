@@ -74,7 +74,7 @@ export class BeatportClient {
       }
     })
 
-    return response.results
+    return response.results ?? []
   }
 
   // (AI) Get tracks from a specific playlist, fetching all pages
@@ -118,7 +118,7 @@ export class BeatportClient {
       }
     })
 
-    const beatportTrackIds = djPlaylist._items
+    const beatportTrackIds = (djPlaylist._items ?? [])
       .filter(item => item.beatport_id)
       .map(item => item.beatport_id)
 
@@ -149,8 +149,8 @@ export class BeatportClient {
       beatport_id: track.id.toString(),
       beatport_link: `https://www.beatport.com/track/-/${track.id}`,
       beatport_preview: track.sample_url,
-      bpm: track.bpm,
-      key: KeyConverter.toOpenKey(`${track.key.camelot_number}${track.key.camelot_letter}`),
+      beatport_bpm: track.bpm,
+      beatport_key: KeyConverter.toOpenKey(`${track.key.camelot_number}${track.key.camelot_letter}`),
       isrc: track.isrc,
       duration: track.length_ms / 1000,
       releasedate: new Date(track.publish_date)
