@@ -219,7 +219,11 @@ export class DJPlaylist implements BaseDJPlaylist {
   }
 
   get imageUrl(): { small: string, medium: string, large: string } | null {
-    if (!this.imageurl) return null
+    if (!this.imageurl) return {
+      small: '',
+      medium: '',
+      large: ''
+    }
 
     return {
       small: getResizedImageUrl(this.imageurl, 80),
