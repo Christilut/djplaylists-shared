@@ -1,5 +1,6 @@
 import { getResizedImageUrl } from '../helpers/image'
 import { PlaylistType } from './playlist'
+import { omit } from 'lodash'
 
 export enum StreamingService {
   AppleMusic = 'applemusic',
@@ -233,7 +234,7 @@ export class DJPlaylist implements BaseDJPlaylist {
   }
 }
 
-export interface DJTrack {
+export class DJTrack {
   id?: string // Row ID
   created_at?: Date // Row creation date
 
@@ -274,6 +275,14 @@ export interface DJTrack {
 
   // For UI / temp fields
   _position?: number
+
+  constructor(obj: any) {
+    Object.assign(this, omit(obj, ['bpm', 'key']))
+  }
+
+  get bpm(): number {
+    return this.beatport_bpm ?? this.spotify_bpm ?? 0
+  }
 }
 
 export interface DJPlaylistUser {
