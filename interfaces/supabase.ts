@@ -1,6 +1,5 @@
 import { getResizedImageUrl } from '../helpers/image'
 import { PlaylistType } from './playlist'
-import { omit } from 'lodash'
 
 export enum StreamingService {
   AppleMusic = 'applemusic',
@@ -277,7 +276,11 @@ export class DJTrack {
   _position?: number
 
   constructor(obj: any) {
-    Object.assign(this, omit(obj, ['bpm', 'key']))
+    // bpm/key are derived getters — never assign them as own properties.
+    const data = { ...obj }
+    delete data.bpm
+    delete data.key
+    Object.assign(this, data)
   }
 
   get bpm(): number {
